@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import AcademyChat from '@/components/AcademyChat';
 import type { Locale } from '@/i18n/config';
 import {
   Bot,
@@ -88,9 +89,14 @@ export default function AcademyLayout({
         </div>
       </header>
 
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-64 bg-white border-l border-slate-200 min-h-[calc(100vh-57px)] sticky top-[57px]">
+      <div className="flex h-[calc(100vh-57px)]">
+        {/* Chat Area (Left) */}
+        <div className="w-80 border-r border-slate-200 bg-white flex flex-col">
+          <AcademyChat />
+        </div>
+
+        {/* Sidebar (Navigation) */}
+        <aside className="w-64 bg-white border-r border-slate-200 overflow-y-auto">
           <nav className="p-4">
             <div className="space-y-1">
               {sidebarLinks.map((link) => {
@@ -139,7 +145,7 @@ export default function AcademyLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-8 overflow-y-auto">
           {children}
         </main>
       </div>
