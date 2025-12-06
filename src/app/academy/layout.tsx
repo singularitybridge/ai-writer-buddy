@@ -7,7 +7,6 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import AcademyChat from '@/components/AcademyChat';
 import type { Locale } from '@/i18n/config';
 import {
-  Bot,
   GraduationCap,
   Trophy,
   BookOpen,
@@ -45,9 +44,12 @@ export default function AcademyLayout({
         <div className="px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-slate-500 hover:text-slate-700 text-sm">
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors"
+              >
                 <BackChevron className="w-4 h-4" />
-                <span>{t('nav.singularityBridge')}</span>
+                <span className="text-sm">{t('common.back')}</span>
               </Link>
               <div className="h-6 w-px bg-slate-200" />
               <div className="flex items-center gap-3">
@@ -55,29 +57,29 @@ export default function AcademyLayout({
                   <GraduationCap className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-slate-900 tracking-tight">{t('academy.title')}</h1>
-                  <p className="text-xs text-slate-500">{t('academy.subtitle')}</p>
+                  <h1 className="font-bold text-slate-900 tracking-tight">{t('academy.title')}</h1>
+                  <p className="text-xs text-slate-500 font-normal">AI Agent Experience by Singularity Bridge</p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <LanguageSwitcher currentLocale={locale} />
               <div className="h-6 w-px bg-slate-200" />
               <Link
-                href="/book/1"
-                className="flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm"
+                href="/book/book-2"
+                className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 <Pen className="w-4 h-4" />
-                <span>{t('nav.openApp')}</span>
+                <span className="text-sm font-medium">{t('nav.openApp')}</span>
               </Link>
               <a
                 href="https://github.com/singularitybridge/ai-writer-buddy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm"
+                className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 <Github className="w-4 h-4" />
-                <span>GitHub</span>
+                <span className="text-sm font-medium">GitHub</span>
               </a>
               <div className="h-6 w-px bg-slate-200" />
               <div className="flex items-center gap-2 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-lg text-sm">
@@ -89,66 +91,69 @@ export default function AcademyLayout({
         </div>
       </header>
 
-      <div className="flex-1 flex h-[calc(100vh-57px)]">
-        {/* Content Area (2/3) */}
-        <div className="flex-1 flex" style={{ width: '66.666%' }}>
-          {/* Sidebar (Navigation) */}
-          <aside className="w-64 bg-white border-l border-slate-200 overflow-y-auto flex-shrink-0">
-            <nav className="p-4">
-              <div className="space-y-1">
-                {sidebarLinks.map((link) => {
-                  const isActive = pathname === link.href ||
-                    (link.href !== '/academy' && pathname.startsWith(link.href));
-                  const Icon = link.icon;
+      {/* Main Content - Fixed height with inner scroll */}
+      <div className="h-[calc(100vh-57px)] flex">
+        {/* Sidebar Navigation (1/4) */}
+        <div className="w-1/4 bg-white border-r border-slate-200 overflow-y-auto">
+          <div className="p-4 border-b border-slate-100">
+            <h3 className="font-bold text-slate-900 text-sm tracking-tight">{t('academy.navigation')}</h3>
+          </div>
+          <nav className="p-2">
+            <div className="space-y-1">
+              {sidebarLinks.map((link) => {
+                const isActive = pathname === link.href ||
+                  (link.href !== '/academy' && pathname.startsWith(link.href));
+                const Icon = link.icon;
 
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                        isActive
-                          ? 'bg-purple-50 text-purple-700'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                      }`}
-                    >
-                      <Icon className={`w-5 h-5 ${isActive ? 'text-purple-600' : 'text-slate-400'}`} />
-                      <span>{link.label}</span>
-                    </Link>
-                  );
-                })}
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'bg-purple-50 text-purple-700'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    }`}
+                  >
+                    <Icon className={`w-5 h-5 ${isActive ? 'text-purple-600' : 'text-slate-400'}`} />
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Progress Card */}
+            <div className="mt-8 p-4 bg-purple-50 rounded-xl border border-purple-100">
+              <div className="flex items-center gap-2 mb-3">
+                <GraduationCap className="w-5 h-5 text-purple-600" />
+                <span className="font-medium text-slate-900">{t('academy.yourProgress')}</span>
               </div>
-
-              {/* Progress Card */}
-              <div className="mt-8 p-4 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl border border-purple-100">
-                <div className="flex items-center gap-2 mb-3">
-                  <GraduationCap className="w-5 h-5 text-purple-600" />
-                  <span className="font-medium text-slate-900">{t('academy.yourProgress')}</span>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-600">{t('academy.level')}</span>
+                  <span className="font-medium text-slate-900">1 - {t('academy.beginner')}</span>
                 </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600">{t('academy.level')}</span>
-                    <span className="font-medium text-slate-900">1 - {t('academy.beginner')}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600">{t('academy.challenges')}</span>
-                    <span className="font-medium text-slate-900">0 / 7</span>
-                  </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '0%' }} />
-                  </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-600">{t('academy.challenges')}</span>
+                  <span className="font-medium text-slate-900">0 / 7</span>
+                </div>
+                <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
+                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: '0%' }} />
                 </div>
               </div>
-            </nav>
-          </aside>
-
-          {/* Main Content */}
-          <main className="flex-1 p-8 overflow-y-auto bg-slate-50">
-            {children}
-          </main>
+            </div>
+          </nav>
         </div>
 
-        {/* Chat Area (1/3) */}
-        <div className="w-1/3 border-l border-slate-200 bg-white flex flex-col">
+        {/* Main Content (1/2) */}
+        <div className="w-1/2 bg-slate-50 overflow-y-auto">
+          <div className="p-8">
+            {children}
+          </div>
+        </div>
+
+        {/* Chat Area (1/4) */}
+        <div className="w-1/4 border-l border-slate-200 bg-white flex flex-col">
           <AcademyChat />
         </div>
       </div>
