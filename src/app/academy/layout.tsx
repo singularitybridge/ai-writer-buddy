@@ -89,68 +89,66 @@ export default function AcademyLayout({
         </div>
       </header>
 
-      <div className="flex-1 flex">
+      <div className="flex-1 flex h-[calc(100vh-57px)]">
         {/* Content Area (2/3) */}
-        <div className="flex-1 flex flex-col" style={{ width: '66.666%' }}>
-          <div className="flex flex-1">
-            {/* Sidebar (Navigation) */}
-            <aside className="w-64 bg-white border-l border-slate-200 overflow-y-auto">
-              <nav className="p-4">
-                <div className="space-y-1">
-                  {sidebarLinks.map((link) => {
-                    const isActive = pathname === link.href ||
-                      (link.href !== '/academy' && pathname.startsWith(link.href));
-                    const Icon = link.icon;
+        <div className="flex-1 flex" style={{ width: '66.666%' }}>
+          {/* Sidebar (Navigation) */}
+          <aside className="w-64 bg-white border-l border-slate-200 overflow-y-auto flex-shrink-0">
+            <nav className="p-4">
+              <div className="space-y-1">
+                {sidebarLinks.map((link) => {
+                  const isActive = pathname === link.href ||
+                    (link.href !== '/academy' && pathname.startsWith(link.href));
+                  const Icon = link.icon;
 
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                          isActive
-                            ? 'bg-purple-50 text-purple-700'
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                        }`}
-                      >
-                        <Icon className={`w-5 h-5 ${isActive ? 'text-purple-600' : 'text-slate-400'}`} />
-                        <span>{link.label}</span>
-                      </Link>
-                    );
-                  })}
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                        isActive
+                          ? 'bg-purple-50 text-purple-700'
+                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                      }`}
+                    >
+                      <Icon className={`w-5 h-5 ${isActive ? 'text-purple-600' : 'text-slate-400'}`} />
+                      <span>{link.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Progress Card */}
+              <div className="mt-8 p-4 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl border border-purple-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <GraduationCap className="w-5 h-5 text-purple-600" />
+                  <span className="font-medium text-slate-900">{t('academy.yourProgress')}</span>
                 </div>
-
-                {/* Progress Card */}
-                <div className="mt-8 p-4 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl border border-purple-100">
-                  <div className="flex items-center gap-2 mb-3">
-                    <GraduationCap className="w-5 h-5 text-purple-600" />
-                    <span className="font-medium text-slate-900">{t('academy.yourProgress')}</span>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-600">{t('academy.level')}</span>
+                    <span className="font-medium text-slate-900">1 - {t('academy.beginner')}</span>
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-slate-600">{t('academy.level')}</span>
-                      <span className="font-medium text-slate-900">1 - {t('academy.beginner')}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-slate-600">{t('academy.challenges')}</span>
-                      <span className="font-medium text-slate-900">0 / 7</span>
-                    </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
-                      <div className="bg-purple-500 h-2 rounded-full" style={{ width: '0%' }} />
-                    </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-600">{t('academy.challenges')}</span>
+                    <span className="font-medium text-slate-900">0 / 7</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-2 mt-2">
+                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '0%' }} />
                   </div>
                 </div>
-              </nav>
-            </aside>
+              </div>
+            </nav>
+          </aside>
 
-            {/* Main Content */}
-            <main className="flex-1 p-8 overflow-y-auto bg-slate-50">
-              {children}
-            </main>
-          </div>
+          {/* Main Content */}
+          <main className="flex-1 p-8 overflow-y-auto bg-slate-50">
+            {children}
+          </main>
         </div>
 
         {/* Chat Area (1/3) */}
-        <div className="w-1/3 border-l border-slate-200 bg-white flex flex-col h-[calc(100vh-57px)]">
+        <div className="w-1/3 border-l border-slate-200 bg-white flex flex-col">
           <AcademyChat />
         </div>
       </div>
