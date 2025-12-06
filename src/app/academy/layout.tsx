@@ -150,7 +150,7 @@ export default function AcademyLayout({
         </div>
 
         {/* Chat Area (1/3) */}
-        <div className="w-1/3 border-r border-slate-200 bg-white flex flex-col">
+        <div className="w-1/3 border-l border-slate-200 bg-white flex flex-col h-[calc(100vh-57px)]">
           <AcademyChat />
         </div>
       </div>

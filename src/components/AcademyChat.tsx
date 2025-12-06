@@ -170,7 +170,7 @@ export default function AcademyChat() {
   return (
     <div className="flex flex-col h-full relative">
       {/* Chat Header */}
-      <div className="p-4 border-b border-slate-200 bg-white">
+      <div className="p-4 border-b border-slate-200 bg-white flex-shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
@@ -190,14 +190,14 @@ export default function AcademyChat() {
       </div>
 
       {/* Context Badge */}
-      <div className="px-4 py-3 bg-slate-50 border-b border-slate-100">
+      <div className="px-4 py-3 bg-slate-50 border-b border-slate-100 flex-shrink-0">
         <p className="text-xs text-slate-500">
           {isHebrew ? 'הקשר:' : 'Context:'} <span className="text-slate-700 font-medium">{getPageContext()}</span>
         </p>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center">
             <div className="text-center text-slate-400">
@@ -288,7 +288,7 @@ export default function AcademyChat() {
       </div>
 
       {/* Input Area */}
-      <div className="p-4 border-t border-slate-200 bg-white">
+      <div className="p-4 border-t border-slate-200 bg-white flex-shrink-0">
         <form onSubmit={handleSubmit} className="flex gap-3">
           <div className="flex-1 relative">
             <textarea
