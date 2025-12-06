@@ -1,0 +1,417 @@
+{
+  "challenges": [
+    {
+      "id": "ch-001",
+      "title": "Editing Pages via Chat",
+      "description": "As a user, I want to edit pages in my book through chat with Naomi.",
+      "points": 50,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "editing", "ai-agent"],
+      "instructions": "## The Story\n\nAs a user writing a book, I want to ask Naomi (the AI agent) to edit an existing page. I'll write in the chat something like:\n\n> \"Naomi, update the page 'New Morning' - change the character's name to Dana\"\n\nNaomi will understand the request, find the correct page, and update it.\n\n## What Should Happen\n\n- User writes a request in chat\n- Naomi identifies this as an edit request\n- Naomi finds the relevant page\n- Naomi updates the content\n- The updated content is saved and displayed\n\n## Technical Background\n\nImplementation requires:\n- API route that receives instructions and performs updates\n- Connection to OpenAI with function calling\n- State and localStorage updates",
+      "successCriteria": [
+        "Edit request in chat updates the page",
+        "Changes appear immediately on screen",
+        "Changes persist after refresh"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "Vercel AI SDK",
+          "url": "https://sdk.vercel.ai/docs",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Next.js API Routes"]
+    },
+    {
+      "id": "ch-002",
+      "title": "Adding New Pages to Book",
+      "description": "As a user, I want to ask Naomi to add a new page to my book through chat.",
+      "points": 100,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "creation", "ai-agent"],
+      "instructions": "## The Story\n\nAs a user writing a book, I want to ask Naomi to add a new page. I'll write in the chat:\n\n> \"Naomi, add a new page to chapter one - a scene in a coffee shop where Ronit meets an old friend\"\n\nNaomi will understand the request, write the content, and add it to the correct chapter.\n\n## What Should Happen\n\n- User describes the page they want\n- Naomi understands which chapter to add it to\n- Naomi writes appropriate content in the book's style\n- The new page is added and displayed\n\n## Technical Background\n\nImplementation requires:\n- Extending function calling to add pages\n- Content creation by AI\n- State update with the new page",
+      "successCriteria": [
+        "Chat request creates a new page",
+        "Content is written in the book's style",
+        "Page is added to the correct chapter"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "OpenAI Function Calling",
+          "url": "https://platform.openai.com/docs/guides/function-calling",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-003",
+      "title": "Deleting Pages via Chat",
+      "description": "As a user, I want to ask Naomi to delete a page from my book through chat.",
+      "points": 50,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "delete", "ai-agent"],
+      "instructions": "## The Story\n\nAs a user writing a book, sometimes I want to delete a page that no longer fits. I'll write in the chat:\n\n> \"Naomi, delete the page 'Morning View' from chapter one\"\n\nNaomi will ask for confirmation, and after I confirm - she'll delete the page.\n\n## What Should Happen\n\n- User requests to delete a page in chat\n- Naomi identifies the relevant page\n- Naomi asks for confirmation before deletion\n- After confirmation, the page is deleted\n- The change is saved and displayed\n\n## Technical Background\n\nImplementation requires:\n- Adding a delete tool to function calling\n- Confirmation mechanism in chat\n- State and localStorage updates",
+      "successCriteria": [
+        "Delete request in chat initiates the process",
+        "Naomi asks for confirmation before deletion",
+        "Page is deleted after confirmation",
+        "Change persists after refresh"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "Vercel AI SDK - Tool Calling",
+          "url": "https://sdk.vercel.ai/docs/ai-sdk-core/tools-and-tool-calling",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-004",
+      "title": "Naomi Continues the Story",
+      "description": "As a user, I want to ask Naomi to continue writing my story in the existing style.",
+      "points": 150,
+      "difficulty": "intermediate",
+      "category": "ai",
+      "tags": ["chat", "ai-agent", "writing", "content-generation"],
+      "instructions": "## The Story\n\nAs a user writing a book, I want Naomi to continue writing my story. I'll write in the chat:\n\n> \"Naomi, continue the page 'New Morning' - add a scene where Ronit leaves the house and meets the neighbor\"\n\nNaomi will read the existing content, understand the style, and continue writing harmoniously.\n\n## What Should Happen\n\n- User requests story continuation\n- Naomi reads the existing content\n- Naomi identifies the writing style\n- Naomi writes appropriate continuation\n- New content is added to the page\n\n## Technical Background\n\nImplementation requires:\n- Passing context (existing content) to AI\n- System prompt that guides the style\n- Function calling to update the page",
+      "successCriteria": [
+        "Chat request triggers automatic writing",
+        "New content matches existing style",
+        "Naomi maintains consistency with characters and plot",
+        "Content updates on the correct page"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "Vercel AI SDK",
+          "url": "https://sdk.vercel.ai/docs",
+          "type": "docs"
+        },
+        {
+          "title": "OpenAI Function Calling",
+          "url": "https://platform.openai.com/docs/guides/function-calling",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-005",
+      "title": "Naomi Reads the Story Aloud",
+      "description": "As a user, I want to ask Naomi to read the current page aloud.",
+      "points": 150,
+      "difficulty": "intermediate",
+      "category": "voice",
+      "tags": ["chat", "voice", "ai-agent", "elevenlabs"],
+      "instructions": "## The Story\n\nAs a user reading a book, sometimes I want to listen instead of read. I'll write in the chat:\n\n> \"Naomi, read me the current page\"\n\nNaomi will read the text in a pleasant voice with proper pronunciation.\n\n## What Should Happen\n\n- User requests reading in chat\n- Naomi identifies the current page\n- Naomi activates voice reading\n- User can stop the reading\n\n## Technical Background\n\nImplementation requires:\n- Connection to ElevenLabs API\n- API route for text-to-audio conversion\n- Function calling to activate reading",
+      "successCriteria": [
+        "Chat request activates reading",
+        "Reading has proper pronunciation",
+        "Reading can be stopped",
+        "Visual indication that Naomi is reading"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "ElevenLabs API Docs",
+          "url": "https://docs.elevenlabs.io/api-reference",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["ElevenLabs API", "Vercel AI SDK", "Web Audio API"]
+    },
+    {
+      "id": "ch-006",
+      "title": "Naomi Reviews Your Writing",
+      "description": "As a user, I want to ask Naomi to review my writing and give feedback on style and consistency.",
+      "points": 200,
+      "difficulty": "advanced",
+      "category": "review",
+      "tags": ["chat", "ai-agent", "feedback", "quality"],
+      "instructions": "## The Story\n\nAs a user writing a book, I want to get feedback on my writing. I'll write in the chat:\n\n> \"Naomi, check the current page and give me feedback on the writing\"\n\nNaomi will read the text, check style, consistency with characters, and give constructive feedback.\n\n## What Should Happen\n\n- User requests feedback in chat\n- Naomi reads the content\n- Naomi uses the knowledge base to check consistency\n- Naomi gives detailed feedback with suggestions for improvement\n\n## Example Requests\n\n- \"Naomi, are there consistency issues on this page?\"\n- \"Naomi, check that the characters behave according to their defined traits\"\n- \"Naomi, what do you think about the story pace in this chapter?\"\n\n## Technical Background\n\nImplementation requires:\n- Access to knowledge base (characters, locations, style)\n- System prompt that defines Naomi as an editor\n- Structured output for organized feedback",
+      "successCriteria": [
+        "Chat request returns detailed feedback",
+        "Feedback addresses writing style",
+        "Naomi checks consistency with knowledge base",
+        "Improvement suggestions are clear and useful"
+      ],
+      "dependencies": ["ch-004"],
+      "resources": [
+        {
+          "title": "OpenAI Structured Outputs",
+          "url": "https://platform.openai.com/docs/guides/structured-outputs",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Structured Outputs"]
+    },
+    {
+      "id": "ch-007",
+      "title": "Naomi Speaks English",
+      "description": "As an English-speaking user, I want to use the app and chat with Naomi in English.",
+      "points": 100,
+      "difficulty": "intermediate",
+      "category": "i18n",
+      "tags": ["i18n", "chat", "language", "ai-agent"],
+      "instructions": "## The Story\n\nAs a user who prefers English, I want:\n- To see the interface in English\n- To chat with Naomi in English\n- Naomi to understand and respond to me in English\n\n## What Should Happen\n\n- Language switch button in interface\n- Interface switches to English (LTR)\n- Naomi detects user's language\n- Naomi responds in the appropriate language\n\n## Example Conversation in English\n\n> User: \"Naomi, add a new page about the character meeting a stranger\"\n> Naomi: \"I'll add a new page to the current chapter. Here's what I wrote...\"\n\n## Technical Background\n\nImplementation requires:\n- i18n library (next-intl)\n- Translation files for interface\n- Passing selected language to Naomi's system prompt",
+      "successCriteria": [
+        "Language switching in interface works",
+        "Interface displays in English/Hebrew based on choice",
+        "Naomi responds in the appropriate language",
+        "RTL/LTR changes based on language"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "next-intl Documentation",
+          "url": "https://next-intl-docs.vercel.app/",
+          "type": "docs"
+        }
+      ],
+      "techStack": ["next-intl", "Vercel AI SDK", "OpenAI"]
+    }
+  ],
+  "techGuides": [
+    {
+      "id": "guide-001",
+      "slug": "project-overview",
+      "title": "Project Overview",
+      "description": "Deep dive into AI Story Writer - a book writing app with an AI agent",
+      "category": "architecture",
+      "content": "# AI Story Writer - Complete Overview\n\n## What is it?\n\nA full application for writing books and stories with an AI agent named **Naomi**. The app is part of Singularity Bridge - a platform for learning AI development through real experiences.\n\n## Key Principle: Everything Through Chat\n\n**Important to understand:** The app is built around one idea - **all actions are performed through conversation with Naomi**.\n\nInstead of edit, add, and delete buttons - the user simply asks Naomi:\n- \"Naomi, update this page - change the name to Dana\"\n- \"Naomi, add a new page with a coffee shop scene\"\n- \"Naomi, delete the last page\"\n- \"Naomi, read me the story\"\n\nThis is an AI Agent Experience - where AI does the work.\n\n## Key Features\n\n### 1. Book Library\n- Grid display of 4 sample books\n- Book cards with cover images\n- Navigation to reading\n\n### 2. Book Reader\n- **3-panel layout**:\n  - Left: Chapter and page navigation\n  - Center: Page content\n  - Right: Chat with Naomi\n- Support for text and image pages\n- Voice-over (through Naomi)\n\n### 3. Knowledge Base\n- **Characters**: Characters with traits, relationships, and backstory\n- **Knowledge Items**: Information about locations, plot, world\n- Naomi uses knowledge base to maintain consistency\n\n### 4. Chat with Naomi\n- **This is the core of the app**\n- Naomi understands context (which book, chapter, page)\n- Naomi can: edit, add, delete, read aloud\n- Naomi uses knowledge base for consistency\n\n## Project Structure\n\n```\nsrc/\n├── app/\n│   ├── page.tsx              # Home page\n│   ├── book/\n│   │   └── [id]/\n│   │       ├── page.tsx      # Book reader + chat\n│   │       └── knowledge/    # Knowledge base\n│   ├── api/\n│   │   └── book/[id]/route.ts\n│   └── academy/              # The academy\n├── components/\n│   └── ChatAssistant.tsx     # Chat component\n├── lib/\n│   └── data.ts               # Data layer\n└── data/\n    └── db.json               # Database\n```\n\n## Data Models\n\n### Book\n- id, title, subtitle, description\n- genre, author, coverImage\n\n### Chapter\n- id, bookId, title, order\n\n### Page\n- id, chapterId, type ('text' | 'image')\n- title, content, order\n\n### Character\n- id, bookId, name, description\n- role, traits[], backstory\n- relationships[]\n\n### KnowledgeItem\n- id, bookId, title, content\n- category, tags[]\n\n## What to Implement in Academy\n\nThe UI is complete - what's missing is the AI connection:\n\n- **ch-001**: Editing pages via chat\n- **ch-002**: Adding pages via chat\n- **ch-003**: Deleting pages via chat\n- **ch-004**: Naomi continues the story\n- **ch-005**: Voice reading via chat\n- **ch-006**: Naomi reviews writing\n- **ch-007**: Multi-language support\n\nAll challenges focus on **connecting Naomi to real AI** so she can perform actions.",
+      "order": 1,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-002", "guide-003", "guide-005"],
+      "icon": "BookOpen"
+    },
+    {
+      "id": "guide-002",
+      "slug": "tech-stack",
+      "title": "Tech Stack - Technologies",
+      "description": "Complete overview of all technologies and libraries in the project",
+      "category": "tech-stack",
+      "content": "# Tech Stack\n\n## Frontend Core\n\n### Next.js 16\nThe new version of Next.js with:\n- **App Router** - Server Components by default\n- **API Routes** - Easy endpoint creation\n- **Image Optimization** - Optimal image loading\n- **Turbopack** - Faster bundler\n\n```typescript\n// src/app/page.tsx\nexport default function HomePage() {\n  return <div>Hello World</div>;\n}\n```\n\n### React 19\nThe new version of React:\n- Server Components\n- Concurrent Features\n- Improved Hooks\n\n### TypeScript 5.x\nFull type safety:\n```typescript\ninterface Book {\n  id: string;\n  title: string;\n  chapters: Chapter[];\n}\n\ninterface Page {\n  type: 'text' | 'image';\n  content: string;\n}\n```\n\n### Tailwind CSS 4\nUtility-first styling:\n```tsx\n<div className=\"bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg transition-all\">\n  <h2 className=\"text-xl font-bold text-slate-900\">Title</h2>\n</div>\n```\n\n### Lucide React\nModern icon library:\n```tsx\nimport { BookOpen, Bot, Sparkles } from 'lucide-react';\n\n<Bot className=\"w-5 h-5 text-purple-600\" />\n```\n\n### Google Fonts\nThree fonts in use:\n- **Heebo** - Hebrew UI\n- **Frank Ruhl Libre** - Literary content (serif)\n- **Inter** - Technical text\n\n## AI & APIs (for challenges)\n\n### Vercel AI SDK\n```typescript\nimport { generateText, tool } from 'ai';\nimport { openai } from '@ai-sdk/openai';\n\nconst result = await generateText({\n  model: openai('gpt-4o-mini'),\n  prompt: 'Write a story continuation...',\n});\n```\n\n### OpenAI GPT-4.1\n- **gpt-4o-mini** - Fast and cheap, perfect for learning\n- **gpt-4o** - More advanced\n- **Function Calling** - For agents\n\n### ElevenLabs\nVoice reading:\n```typescript\nconst response = await fetch(\n  'https://api.elevenlabs.io/v1/text-to-speech/VOICE_ID',\n  {\n    headers: { 'xi-api-key': API_KEY },\n    body: JSON.stringify({\n      text: content,\n      model_id: 'eleven_multilingual_v2'\n    })\n  }\n);\n```\n\n### fal.ai\nImage generation for stories:\n```typescript\nimport { fal } from '@fal-ai/serverless-client';\n\nconst result = await fal.subscribe('fal-ai/flux', {\n  input: { prompt: 'A magical forest scene' }\n});\n```\n\n## State Management\n\n### React useState/useEffect\nLocal state management:\n```typescript\nconst [book, setBook] = useState<Book | null>(null);\nconst [selectedPage, setSelectedPage] = useState<Page | null>(null);\n\nuseEffect(() => {\n  fetchBookData();\n}, [bookId]);\n```\n\n### localStorage\nLocal storage:\n```typescript\nlocalStorage.setItem(`book_${bookId}`, JSON.stringify(book));\nconst saved = localStorage.getItem(`book_${bookId}`);\n```\n\n## Data Layer\n\n### Static JSON Database\n`db.json` file with all data:\n```typescript\nimport dbData from '@/data/db.json';\n\nexport function getBooks(): Book[] {\n  return db.books;\n}\n```",
+      "order": 2,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-001", "guide-004"],
+      "icon": "Code2"
+    },
+    {
+      "id": "guide-003",
+      "slug": "vibe-coding",
+      "title": "What is Vibe Coding?",
+      "description": "Learn about the new development approach with AI",
+      "category": "concepts",
+      "content": "# Vibe Coding - Development with AI\n\n## What is it?\n\nVibe Coding is a development approach where you work **together** with AI as a coding partner.\n\n## How does it work?\n\n1. **Describe what you want** - in natural language\n\n2. **AI suggests code** - review and learn\n\n3. **Improve together** - iterate until it works\n\n4. **Understand what happened** - learn from the process\n\n## Recommended Tools\n\n- **Claude Code** - from Anthropic\n\n- **Cursor** - IDE with AI\n\n- **GitHub Copilot** - Code suggestions\n\n## Tips\n\n- Provide sufficient context\n\n- Ask questions\n\n- Don't accept everything - verify!\n\n- Learn from mistakes",
+      "order": 3,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": [],
+      "icon": "Sparkles"
+    },
+    {
+      "id": "guide-004",
+      "slug": "mcp-intro",
+      "title": "Introduction to MCP",
+      "description": "Model Context Protocol - how AI connects to tools",
+      "category": "concepts",
+      "content": "# MCP - Model Context Protocol\n\n## What is it?\n\nMCP is a protocol that allows AI models to connect to external tools and data sources.\n\n## Why is it important?\n\n- AI can access files\n- AI can run commands\n- AI can read from APIs\n\n## Example\n\n```json\n{\n  \"mcpServers\": {\n    \"filesystem\": {\n      \"command\": \"npx\",\n      \"args\": [\"@anthropic/mcp-server-filesystem\", \"/path\"]\n    }\n  }\n}\n```\n\n## Common MCP Servers\n\n- **filesystem** - File access\n- **github** - GitHub access\n- **postgres** - DB access\n- **brave-search** - Web search",
+      "order": 4,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-003"],
+      "icon": "Plug"
+    },
+    {
+      "id": "guide-005",
+      "slug": "expansion-ideas",
+      "title": "Singularity Bridge - Future Expansions",
+      "description": "Additional AI experiences and platform expansion directions",
+      "category": "roadmap",
+      "content": "# Singularity Bridge - Future AI Experiences\n\n## The Idea\n\nSingularity Bridge is a platform for learning AI development through **real experiences**. Every app we build:\n- Actually works (not just a demo)\n- Teaches AI and development concepts\n- Connected to an academy with challenges\n\n## First Experience: AI Story Writer\n\nAlready exists! A story writer with:\n- **Naomi** - AI agent for writing\n- **Knowledge Base** - Knowledge base for characters and plot\n- **Voice-over** - Voice reading\n\n---\n\n## Experiences Coming\n\n### 1. AI Voice Assistant\n**Type:** Interactive voice conversation\n\n**Features:**\n- Real-time conversation with AI\n- Support for Hebrew and English\n- Voice commands to perform actions\n- Client-side function calling\n\n**Technologies:**\n- ElevenLabs Conversational AI\n- VAPI Voice Agents\n- OpenAI Realtime API\n\n---\n\n### 2. AI Image Studio\n**Type:** Image creation and editing with AI\n\n**Features:**\n- Create images from text\n- Edit existing images\n- Style transfer\n- Remove/add objects\n\n**Technologies:**\n- fal.ai FLUX models\n- Stable Diffusion\n- Controlnet for precise editing\n\n---\n\n### 3. AI Data Analyst\n**Type:** Data analysis with conversation\n\n**Features:**\n- Upload CSV/Excel files\n- Natural language questions\n- Automatic chart creation\n- Insights and summaries\n\n**Technologies:**\n- Code Interpreter (OpenAI)\n- Claude Artifacts\n- Chart.js / Recharts\n\n---\n\n### 4. AI Meeting Assistant\n**Type:** Smart meeting helper\n\n**Features:**\n- Real-time transcription\n- Automatic summary\n- Action item detection\n- Follow-up task creation\n\n**Technologies:**\n- Whisper for transcription\n- GPT for summarization\n- Calendar API\n\n---\n\n### 5. AI Form Builder\n**Type:** Smart form building\n\n**Features:**\n- Create form from description\n- Smart validation\n- Auto-fill\n- Multi-step wizard\n\n**Technologies:**\n- Structured Outputs\n- Zod schemas\n- React Hook Form\n\n---\n\n## Structure of Each Experience\n\nEvery app in Singularity Bridge will include:\n\n```\n/experience-name\n├── README.md\n├── /src\n└── /academy\n    ├── challenges/\n    ├── guides/\n    └── badges/\n```\n\n## Development Principles\n\n1. **Real First** - Every app actually works\n2. **Learn by Doing** - Learning through building\n3. **Progressive** - Easy to complex\n4. **Production Ready** - High quality code",
+      "order": 5,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-001", "guide-002"],
+      "icon": "Rocket"
+    }
+  ],
+  "aiToolSetups": [
+    {
+      "id": "tool-001",
+      "slug": "claude-code",
+      "toolName": "Claude Code",
+      "description": "AI coding tool from Anthropic - works directly in terminal",
+      "icon": "Terminal",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "Installation",
+          "instructions": "Install Claude Code using npm:",
+          "codeSnippet": "npm install -g @anthropic-ai/claude-code",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "API Key Setup",
+          "instructions": "Set your Anthropic API key:",
+          "codeSnippet": "export ANTHROPIC_API_KEY=your-key-here",
+          "language": "bash"
+        },
+        {
+          "order": 3,
+          "title": "Launch",
+          "instructions": "Run Claude Code in your project folder:",
+          "codeSnippet": "cd /path/to/project\nclaude",
+          "language": "bash"
+        }
+      ],
+      "recommendedConfig": "{\n  \"permissions\": {\n    \"allow\": [\"Read\", \"Write\", \"Bash\"]\n  }\n}",
+      "usageTips": [
+        "Provide clear context - explain the goal",
+        "Use /help to see commands",
+        "Review code before approving",
+        "Use CLAUDE.md for project settings"
+      ],
+      "officialDocs": "https://docs.anthropic.com/claude-code"
+    },
+    {
+      "id": "tool-002",
+      "slug": "cursor",
+      "toolName": "Cursor IDE",
+      "description": "IDE with built-in AI - based on VS Code",
+      "icon": "Code",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "Download",
+          "instructions": "Download Cursor from the official site:",
+          "codeSnippet": "# Go to: https://cursor.sh\n# Download and install",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "Model Setup",
+          "instructions": "Open Settings and configure your preferred model:",
+          "codeSnippet": "# Settings > Models > Claude 3.5 Sonnet",
+          "language": "text"
+        },
+        {
+          "order": 3,
+          "title": "Keyboard Shortcuts",
+          "instructions": "Learn the important keyboard shortcuts:",
+          "codeSnippet": "Cmd+K - Open AI chat\nCmd+L - Ask about selected code\nCmd+Shift+K - Edit inline",
+          "language": "text"
+        }
+      ],
+      "recommendedConfig": "{}",
+      "usageTips": [
+        "Use Cmd+K for quick questions",
+        "Select code and ask about it",
+        "Use @file to reference files",
+        "Create .cursorrules for project settings"
+      ],
+      "officialDocs": "https://cursor.sh/docs"
+    },
+    {
+      "id": "tool-003",
+      "slug": "github-copilot",
+      "toolName": "GitHub Copilot",
+      "description": "AI code assistant from GitHub - works in any IDE",
+      "icon": "Github",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "Sign Up",
+          "instructions": "Sign up for GitHub Copilot:",
+          "codeSnippet": "# Go to: https://github.com/features/copilot\n# Sign up (there's a trial period)",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "Extension Installation",
+          "instructions": "Install the extension in VS Code:",
+          "codeSnippet": "# Extensions > Search: GitHub Copilot\n# Install",
+          "language": "text"
+        },
+        {
+          "order": 3,
+          "title": "Sign In",
+          "instructions": "Connect with your GitHub account:",
+          "codeSnippet": "# Click Sign in to GitHub\n# Confirm the connection",
+          "language": "text"
+        }
+      ],
+      "recommendedConfig": "{}",
+      "usageTips": [
+        "Write comments before code - Copilot will complete",
+        "Tab to accept suggestion, Esc to reject",
+        "Alt+] and Alt+[ to switch between suggestions",
+        "Copilot Chat for complex questions"
+      ],
+      "officialDocs": "https://docs.github.com/copilot"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-first-steps",
+      "name": "First Steps",
+      "description": "Completed your first challenge",
+      "icon": "Star",
+      "criteria": "Complete one beginner challenge"
+    },
+    {
+      "id": "badge-crud-master",
+      "name": "CRUD Master",
+      "description": "Completed all CRUD challenges",
+      "icon": "Database",
+      "criteria": "Complete challenges ch-001, ch-002, ch-003",
+      "requiredChallenges": ["ch-001", "ch-002", "ch-003"]
+    },
+    {
+      "id": "badge-ai-pioneer",
+      "name": "AI Pioneer",
+      "description": "Completed an AI agent challenge",
+      "icon": "Bot",
+      "criteria": "Complete challenge ch-004",
+      "requiredChallenges": ["ch-004"]
+    },
+    {
+      "id": "badge-voice-enabled",
+      "name": "Voice Enabled",
+      "description": "Added voice capabilities to the app",
+      "icon": "Mic",
+      "criteria": "Complete challenge ch-005",
+      "requiredChallenges": ["ch-005"]
+    },
+    {
+      "id": "badge-quality-guard",
+      "name": "Quality Guard",
+      "description": "Built a review system",
+      "icon": "Shield",
+      "criteria": "Complete challenge ch-006",
+      "requiredChallenges": ["ch-006"]
+    },
+    {
+      "id": "badge-global",
+      "name": "Global",
+      "description": "Added multi-language support",
+      "icon": "Globe",
+      "criteria": "Complete challenge ch-007",
+      "requiredChallenges": ["ch-007"]
+    },
+    {
+      "id": "badge-completionist",
+      "name": "Completionist",
+      "description": "Completed all challenges!",
+      "icon": "Trophy",
+      "criteria": "Complete all 7 challenges",
+      "requiredPoints": 800
+    }
+  ]
+}

@@ -1,0 +1,886 @@
+{
+  "books": [
+    {
+      "id": "book-1",
+      "title": "אור בין הצללים",
+      "subtitle": "סיפור על תקווה ואהבה",
+      "description": "רומן מרתק על משפחה ישראלית המתמודדת עם אתגרי החיים המודרניים תוך שמירה על מסורת ותקווה",
+      "genre": "רומן",
+      "author": "נועה לוי",
+      "coverImage": "/covers/book-1.jpg",
+      "coverPrompt": "A romantic novel cover with soft warm light breaking through shadows, watercolor style, Hebrew aesthetic",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-12-06T10:00:00Z"
+    },
+    {
+      "id": "book-2",
+      "title": "הרפתקאות בגליל",
+      "subtitle": "מסע אל הלא נודע",
+      "description": "ספר הרפתקאות לילדים על קבוצת חברים שיוצאת למסע מופלא בנופי הגליל הקסומים",
+      "genre": "הרפתקאות",
+      "author": "יונתן כהן",
+      "coverImage": "/covers/book-2.jpg",
+      "coverPrompt": "Adventure book cover with rolling hills of Galilee, children exploring, vibrant colors, illustrated style",
+      "createdAt": "2025-02-20T14:30:00Z",
+      "updatedAt": "2025-12-05T16:00:00Z"
+    },
+    {
+      "id": "book-3",
+      "title": "קוד הכוכבים",
+      "subtitle": "מדע בדיוני ישראלי",
+      "description": "עתיד רחוק שבו מדענים ישראלים מגלים סוד עתיק המחבר את האנושות לכוכבים",
+      "genre": "מדע בדיוני",
+      "author": "מיכל אברהם",
+      "coverImage": "/covers/book-3.jpg",
+      "coverPrompt": "Sci-fi book cover with stars, futuristic Hebrew text elements, cosmic atmosphere, digital art style",
+      "createdAt": "2025-03-10T09:15:00Z",
+      "updatedAt": "2025-12-04T11:30:00Z"
+    },
+    {
+      "id": "book-4",
+      "title": "מתכונים מהלב",
+      "subtitle": "מסע קולינרי בזמן",
+      "description": "ספר בישול ייחודי המשלב סיפורי משפחה עם מתכונים מסורתיים שעברו מדור לדור",
+      "genre": "בישול",
+      "author": "רחל מזרחי",
+      "coverImage": "/covers/book-4.jpg",
+      "coverPrompt": "Cookbook cover with traditional Middle Eastern dishes, warm kitchen setting, rustic style, appetizing",
+      "createdAt": "2025-04-05T12:00:00Z",
+      "updatedAt": "2025-12-03T08:45:00Z"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1-1",
+      "bookId": "book-1",
+      "title": "פרק ראשון: השחר",
+      "order": 1
+    },
+    {
+      "id": "chapter-1-2",
+      "bookId": "book-1",
+      "title": "פרק שני: המפגש",
+      "order": 2
+    },
+    {
+      "id": "chapter-1-3",
+      "bookId": "book-1",
+      "title": "פרק שלישי: הסוד",
+      "order": 3
+    },
+    {
+      "id": "chapter-2-1",
+      "bookId": "book-2",
+      "title": "פרק ראשון: יציאה למסע",
+      "order": 1
+    },
+    {
+      "id": "chapter-2-2",
+      "bookId": "book-2",
+      "title": "פרק שני: היער המכושף",
+      "order": 2
+    },
+    {
+      "id": "chapter-3-1",
+      "bookId": "book-3",
+      "title": "פרק ראשון: התגלית",
+      "order": 1
+    },
+    {
+      "id": "chapter-3-2",
+      "bookId": "book-3",
+      "title": "פרק שני: המסע לחלל",
+      "order": 2
+    },
+    {
+      "id": "chapter-4-1",
+      "bookId": "book-4",
+      "title": "פרק ראשון: מתכונים של סבתא",
+      "order": 1
+    }
+  ],
+  "pages": [
+    {
+      "id": "page-1-1-1",
+      "chapterId": "chapter-1-1",
+      "type": "text",
+      "title": "בוקר חדש",
+      "content": "השמש זרחה בחלון הקטן, ומילאה את החדר באור זהוב. רונית התעוררה לקול ציפורים ששרו בחצר. היא ידעה שהיום הזה יהיה שונה מכל יום אחר.\n\nהיא התיישבה במיטה והביטה סביב. התמונות על הקיר, הספרים על המדף - הכל נראה אותו דבר, אבל משהו בתוכה השתנה. היא הרגישה את זה כבר מספר ימים, תחושה מוזרה של ציפייה.\n\nהיא קמה והלכה לחלון. הגינה למטה פרחה בצבעים רבים. הורדים האדומים שאמא שתלה לפני שנים פרחו שוב, כמו כל אביב. אבל השנה, הם נראו לה יפים במיוחד.",
+      "order": 1
+    },
+    {
+      "id": "page-1-1-2",
+      "chapterId": "chapter-1-1",
+      "type": "image",
+      "title": "נוף הבוקר",
+      "content": "תמונה המתארת את הגינה המלאה בפרחים, עם אור שחר רך שמאיר את הנוף. ברקע נראים הרים ירוקים.",
+      "imageUrl": "/images/garden-morning.jpg",
+      "order": 2
+    },
+    {
+      "id": "page-1-1-3",
+      "chapterId": "chapter-1-1",
+      "type": "text",
+      "title": "החלטה",
+      "content": "רונית ירדה למטבח. אמא כבר הכינה קפה, והריח המוכר מילא את הבית. \"בוקר טוב, מתוקה,\" אמרה אמא בחיוך. \"ישבת טוב?\"\n\n\"כן, אמא. חלמתי חלום מוזר.\" רונית התיישבה ליד השולחן.\n\n\"ספרי לי.\" אמא מזגה לה כוס מיץ תפוזים.\n\nרונית הסתכלה בחלון. \"חלמתי שאני הולכת בדרך ארוכה, ובסוף מגיעה לים. ואז מישהו קורא לי, אבל אני לא יכולה לראות מי.\"",
+      "order": 3
+    },
+    {
+      "id": "page-1-2-1",
+      "chapterId": "chapter-1-2",
+      "type": "text",
+      "title": "הזר",
+      "content": "באותו בוקר, בדיוק כשרונית יצאה מהבית, היא פגשה אותו. הוא עמד ליד הגדר, מסתכל על מפה ישנה. שערו הכהה נפל על מצחו, ובעיניו היה משהו מוכר.\n\n\"סליחה,\" הוא אמר כשהבחין בה. \"את יודעת איך מגיעים לספרייה העירונית?\"\n\nרונית הרגישה את ליבה פועם. \"כן, זה ממש קרוב. את רוצה שאלווה אותך?\"",
+      "order": 1
+    },
+    {
+      "id": "page-2-1-1",
+      "chapterId": "chapter-2-1",
+      "type": "text",
+      "title": "החברים מתכנסים",
+      "content": "נועם, שירה וטל התכנסו בחצר של נועם. מפת הגליל הייתה פרוסה על השולחן, ושלושתם התכופפו מעליה בהתרגשות.\n\n\"הנה, פה!\" טל הצביע על נקודה ירוקה במפה. \"סבא סיפר לי שיש שם מערה סודית שאף אחד לא מצא כבר שנים.\"\n\n\"ומה יש במערה?\" שאלה שירה בסקרנות.\n\n\"לא יודע בדיוק,\" טל חייך. \"אבל סבא אמר שיש שם אוצר.\"",
+      "order": 1
+    },
+    {
+      "id": "page-2-1-2",
+      "chapterId": "chapter-2-1",
+      "type": "image",
+      "title": "מפת המסע",
+      "content": "מפה עתיקה של הגליל עם סימונים צבעוניים המראים את מסלול ההרפתקה. נקודות עניין מסומנות בכוכבים.",
+      "imageUrl": "/images/adventure-map.jpg",
+      "order": 2
+    },
+    {
+      "id": "page-3-1-1",
+      "chapterId": "chapter-3-1",
+      "type": "text",
+      "title": "המעבדה",
+      "content": "ד\"ר אורי שחר הביט במסכים שמולו. הנתונים שזרמו לא היו דומים לשום דבר שראה קודם. אחרי עשרים שנות מחקר, הוא סוף סוף מצא משהו.\n\n\"זה לא יכול להיות,\" הוא מלמל לעצמו. \"זה פשוט לא יכול.\"\n\nאבל הנתונים לא שיקרו. האות שנקלט מהחלל העמוק היה ברור - מישהו, או משהו, שלח הודעה. ובהודעה הזו היה דבר מדהים: סמלים שנראו כמו אותיות עבריות עתיקות.",
+      "order": 1
+    },
+    {
+      "id": "page-4-1-1",
+      "chapterId": "chapter-4-1",
+      "type": "text",
+      "title": "מרק של אהבה",
+      "content": "סבתא רחל תמיד אמרה שהמרק הטוב ביותר מכין עם אהבה. כשהייתי קטנה, הייתי יושבת לידה במטבח ומסתכלת איך היא מכינה את מרק העוף המפורסם שלה.\n\n\"המרק צריך לבשל לאט,\" היא הייתה אומרת. \"כמו חיים טובים - לא ממהרים, נותנים לדברים להתפתח.\"\n\nעכשיו, הרבה שנים אחרי, אני מכינה את אותו מרק לילדים שלי. והם יושבים לידי, בדיוק כמו שאני ישבתי ליד סבתא.",
+      "order": 1
+    },
+    {
+      "id": "page-4-1-2",
+      "chapterId": "chapter-4-1",
+      "type": "image",
+      "title": "מרק סבתא",
+      "content": "תמונה של סיר מרק מהביל על הכיריים, עם ירקות טריים מסביב וכלי מטבח עתיקים.",
+      "imageUrl": "/images/grandmother-soup.jpg",
+      "order": 2
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": "msg-1",
+      "bookId": "book-1",
+      "role": "assistant",
+      "content": "שלום! אני נעמי, העוזרת הספרותית שלך. אני כאן לעזור לך לכתוב את הספר שלך. איך אוכל לעזור היום?",
+      "timestamp": "2025-12-06T10:00:00Z"
+    },
+    {
+      "id": "msg-2",
+      "bookId": "book-1",
+      "role": "user",
+      "content": "אני צריך עזרה בתיאור הדמות הראשית",
+      "timestamp": "2025-12-06T10:01:00Z"
+    },
+    {
+      "id": "msg-3",
+      "bookId": "book-1",
+      "role": "assistant",
+      "content": "בשמחה! כדי לעזור לך ליצור תיאור עשיר של הדמות הראשית, ספר לי קצת עליה: מה הגיל שלה? מה המקצוע? מה המניע המרכזי שלה בסיפור? אשמח גם לשמוע על המראה החיצוני ועל תכונות אופי בולטות.",
+      "timestamp": "2025-12-06T10:02:00Z"
+    }
+  ],
+  "knowledgeItems": [
+    {
+      "id": "kb-1-1",
+      "bookId": "book-1",
+      "title": "רקע היסטורי - ישראל בשנות ה-90",
+      "content": "הסיפור מתרחש בישראל בשנות ה-90, תקופה של שינויים גדולים. הסכמי אוסלו, גלי העלייה מברית המועצות לשעבר, והתפתחות טכנולוגית מהירה. התקופה מאופיינת בתקווה לשלום אך גם במתחים חברתיים.",
+      "category": "world",
+      "tags": ["היסטוריה", "רקע", "שנות ה-90"],
+      "createdAt": "2025-12-01T10:00:00Z",
+      "updatedAt": "2025-12-01T10:00:00Z"
+    },
+    {
+      "id": "kb-1-2",
+      "bookId": "book-1",
+      "title": "מיקום - העיירה הקטנה",
+      "content": "העיירה הקטנה שבה מתרחש הסיפור היא עיירה פיקטיבית בגליל. אוכלוסייה של כ-5,000 תושבים, רובם ותיקים. יש רחוב ראשי עם חנויות קטנות, בית קפה של מוטי, ספרייה עירונית ישנה, ובית ספר תיכון אחד.",
+      "category": "location",
+      "tags": ["מיקום", "עיירה", "גליל"],
+      "createdAt": "2025-12-01T11:00:00Z",
+      "updatedAt": "2025-12-01T11:00:00Z"
+    },
+    {
+      "id": "kb-1-3",
+      "bookId": "book-1",
+      "title": "נושאים מרכזיים",
+      "content": "הספר עוסק בנושאים של זהות, שורשים ומשמעות הבית. הקונפליקט המרכזי הוא בין רצון לשמר את המסורת לבין השאיפה להתחדש. דמויות מתמודדות עם שאלות של שייכות - למשפחה, לקהילה, לארץ.",
+      "category": "plot",
+      "tags": ["נושאים", "זהות", "מסורת"],
+      "createdAt": "2025-12-02T09:00:00Z",
+      "updatedAt": "2025-12-02T09:00:00Z"
+    },
+    {
+      "id": "kb-1-4",
+      "bookId": "book-1",
+      "title": "מקורות השראה",
+      "content": "הספר מושפע מיצירות כמו 'מישהו לרוץ איתו' של דוד גרוסמן, ו'אהבת ציון' של אברהם מאפו. הסגנון מבקש לשלב ריאליזם עם אלמנטים פואטיים.",
+      "category": "reference",
+      "tags": ["השראה", "ספרות", "סגנון"],
+      "createdAt": "2025-12-03T14:00:00Z",
+      "updatedAt": "2025-12-03T14:00:00Z"
+    },
+    {
+      "id": "kb-2-1",
+      "bookId": "book-2",
+      "title": "עולם הגליל הקסום",
+      "content": "בעולם הסיפור, הגליל הוא מקום מלא קסמים נסתרים. מערות עתיקות מסתירות אוצרות, יערות מלאים ביצורים מופלאים, והרים שומרים על סודות מתקופת המקרא.",
+      "category": "world",
+      "tags": ["פנטזיה", "גליל", "קסם"],
+      "createdAt": "2025-12-01T10:00:00Z",
+      "updatedAt": "2025-12-01T10:00:00Z"
+    },
+    {
+      "id": "kb-2-2",
+      "bookId": "book-2",
+      "title": "כללי הקסם",
+      "content": "הקסם בעולם הסיפור פועל לפי כללים ברורים: רק ילדים יכולים לראות את היצורים הקסומים, הקסם חזק יותר בלילה, ויש להשתמש בחפצים עתיקים כדי לפתוח דלתות נסתרות.",
+      "category": "world",
+      "tags": ["קסם", "כללים", "עולם"],
+      "createdAt": "2025-12-02T11:00:00Z",
+      "updatedAt": "2025-12-02T11:00:00Z"
+    },
+    {
+      "id": "kb-3-1",
+      "bookId": "book-3",
+      "title": "טכנולוגיה עתידנית",
+      "content": "הסיפור מתרחש בשנת 2150. הטכנולוגיה כוללת: מסעות בין-כוכביים (אך עדיין איטיים), תקשורת קוונטית מיידית, בינה מלאכותית מתקדמת אך לא סנטינט, ורפואה שמאריכה חיים עד גיל 150.",
+      "category": "world",
+      "tags": ["טכנולוגיה", "עתיד", "מדע בדיוני"],
+      "createdAt": "2025-12-01T10:00:00Z",
+      "updatedAt": "2025-12-01T10:00:00Z"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char-1-1",
+      "bookId": "book-1",
+      "name": "רונית לוין",
+      "description": "צעירה בת 24, סטודנטית לספרות בירושלים שחוזרת לעיירת מולדתה בגליל. שיער חום ארוך, עיניים ירוקות, גבוהה ורזה.",
+      "role": "protagonist",
+      "traits": ["חולמנית", "אינטליגנטית", "מהססת", "רגישה"],
+      "backstory": "גדלה בעיירה קטנה, אביה נפטר כשהייתה בת 12. חיה עם אמה ונמשכת לספרות ולכתיבה.",
+      "relationships": [
+        { "characterId": "char-1-2", "relationship": "אם" },
+        { "characterId": "char-1-3", "relationship": "עניין רומנטי" }
+      ]
+    },
+    {
+      "id": "char-1-2",
+      "bookId": "book-1",
+      "name": "שרה לוין",
+      "description": "אמה של רונית, אישה בת 52. מנהלת את בית הקפה המקומי. שיער אפור-שחור, חמה ומכילה.",
+      "role": "supporting",
+      "traits": ["חזקה", "מסורתית", "אוהבת", "מגינה"],
+      "backstory": "אלמנה שגידלה את רונית לבד. מחזיקה את בית הקפה שהיה של בעלה המנוח.",
+      "relationships": [
+        { "characterId": "char-1-1", "relationship": "בת" }
+      ]
+    },
+    {
+      "id": "char-1-3",
+      "bookId": "book-1",
+      "name": "דניאל אברמוב",
+      "description": "צעיר בן 26, עולה חדש מרוסיה. גבוה, שיער כהה, עיניים כחולות עמוקות. מדבר עברית עם מבטא קל.",
+      "role": "protagonist",
+      "traits": ["מסתורי", "חכם", "שקט", "אמן"],
+      "backstory": "הגיע לישראל לפני שנה, מחפש את שורשי משפחתו. אמן מוכשר שמצייר נופים.",
+      "relationships": [
+        { "characterId": "char-1-1", "relationship": "עניין רומנטי" }
+      ]
+    },
+    {
+      "id": "char-2-1",
+      "bookId": "book-2",
+      "name": "נועם גולן",
+      "description": "ילד בן 11, מנהיג החבורה. שיער ג'ינג'י מקורזל, נמשים, תמיד עם מפה ביד.",
+      "role": "protagonist",
+      "traits": ["אמיץ", "סקרן", "מנהיג", "אופטימי"],
+      "backstory": "גר בכפר עם הורים חקלאיים, חולם על הרפתקאות גדולות.",
+      "relationships": [
+        { "characterId": "char-2-2", "relationship": "חברה טובה" },
+        { "characterId": "char-2-3", "relationship": "חבר טוב" }
+      ]
+    },
+    {
+      "id": "char-2-2",
+      "bookId": "book-2",
+      "name": "שירה כהן",
+      "description": "ילדה בת 10, החכמה בחבורה. משקפיים עגולים, צמות שחורות, תמיד עם ספר.",
+      "role": "protagonist",
+      "traits": ["חכמה", "זהירה", "נאמנה", "קוראת"],
+      "backstory": "בתו של הספרן המקומי, יודעת הכל על ההיסטוריה של האזור.",
+      "relationships": [
+        { "characterId": "char-2-1", "relationship": "חבר טוב" },
+        { "characterId": "char-2-3", "relationship": "חבר" }
+      ]
+    },
+    {
+      "id": "char-2-3",
+      "bookId": "book-2",
+      "name": "טל לוי",
+      "description": "ילד בן 11, הספורטיבי בחבורה. שיער חום קצר, גבוה לגילו, תמיד בתנועה.",
+      "role": "protagonist",
+      "traits": ["ספורטיבי", "אימפולסיבי", "מצחיק", "נאמן"],
+      "backstory": "נכדו של זקן הכפר, יורש את סיפורי האוצרות המשפחתיים.",
+      "relationships": [
+        { "characterId": "char-2-1", "relationship": "חבר טוב" },
+        { "characterId": "char-2-2", "relationship": "חברה" }
+      ]
+    },
+    {
+      "id": "char-3-1",
+      "bookId": "book-3",
+      "name": "ד\"ר אורי שחר",
+      "description": "מדען בן 45, מנהל פרויקט החיפוש אחר חיים תבוניים. שיער אפור, זקן מסודר, עיניים חומות נוקבות.",
+      "role": "protagonist",
+      "traits": ["גאוני", "אובססיבי", "בודד", "נחוש"],
+      "backstory": "הקדיש את חייו למחקר החלל אחרי שאיבד את משפחתו בתאונה. מאמין שיש תשובות בכוכבים.",
+      "relationships": [
+        { "characterId": "char-3-2", "relationship": "תלמידה ועוזרת" }
+      ]
+    },
+    {
+      "id": "char-3-2",
+      "bookId": "book-3",
+      "name": "מאיה רז",
+      "description": "מדענית צעירה בת 28, עוזרת המחקר של ד\"ר שחר. שיער שחור קצר, עור כהה, חיוך קבוע.",
+      "role": "supporting",
+      "traits": ["אופטימית", "חכמה", "חברותית", "שאפתנית"],
+      "backstory": "בוגרת מצטיינת של הטכניון, בחרה במחקר על פני קריירה בתעשייה.",
+      "relationships": [
+        { "characterId": "char-3-1", "relationship": "מנטור" }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "ch-001",
+      "title": "עריכת עמודים בספר",
+      "description": "כמשתמש, אני רוצה לערוך את תוכן העמודים בספר שלי דרך הצ'אט עם נעמי.",
+      "points": 50,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "editing", "ai-agent"],
+      "instructions": "## הסיפור\n\nכמשתמש שכותב ספר, אני רוצה לבקש מנעמי (סוכן ה-AI) לערוך עמוד קיים. אכתוב בצ'אט משהו כמו:\n\n> \"נעמי, עדכני את העמוד 'בוקר חדש' - שני את השם של הדמות לדנה\"\n\nנעמי תבין את הבקשה, תמצא את העמוד הנכון, ותעדכן אותו.\n\n## מה צריך לקרות\n\n- המשתמש כותב בקשה בצ'אט\n- נעמי מזהה שזו בקשת עריכה\n- נעמי מוצאת את העמוד הרלוונטי\n- נעמי מעדכנת את התוכן\n- התוכן המעודכן נשמר ומוצג\n\n## רקע טכני\n\nהמימוש דורש:\n- API route שמקבל הוראה ומבצע עדכון\n- חיבור ל-OpenAI עם function calling\n- עדכון ה-state וה-localStorage",
+      "successCriteria": [
+        "בקשת עריכה בצ'אט מעדכנת את העמוד",
+        "השינוי מוצג מיד במסך",
+        "השינויים נשמרים לאחר רענון"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "Vercel AI SDK",
+          "url": "https://sdk.vercel.ai/docs",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "התחל ביצירת API route שמקבל את הטקסט ומחזיר את העמוד המעודכן",
+          "pointsPenalty": 5
+        },
+        {
+          "level": 2,
+          "text": "השתמש ב-function calling כדי לתת ל-AI את היכולת לקרוא ולעדכן עמודים",
+          "pointsPenalty": 10
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Next.js API Routes"]
+    },
+    {
+      "id": "ch-002",
+      "title": "הוספת עמוד חדש לספר",
+      "description": "כמשתמש, אני רוצה לבקש מנעמי להוסיף עמוד חדש לספר שלי דרך הצ'אט.",
+      "points": 100,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "creation", "ai-agent"],
+      "instructions": "## הסיפור\n\nכמשתמש שכותב ספר, אני רוצה לבקש מנעמי להוסיף עמוד חדש. אכתוב בצ'אט:\n\n> \"נעמי, הוסיפי עמוד חדש לפרק הראשון - סצנה בבית קפה שבה רונית פוגשת חברה ותיקה\"\n\nנעמי תבין את הבקשה, תכתוב את התוכן, ותוסיף אותו לפרק הנכון.\n\n## מה צריך לקרות\n\n- המשתמש מתאר את העמוד שהוא רוצה\n- נעמי מבינה לאיזה פרק להוסיף\n- נעמי כותבת תוכן מתאים בסגנון הספר\n- העמוד החדש מתווסף ומוצג\n\n## רקע טכני\n\nהמימוש דורש:\n- הרחבת ה-function calling להוספת עמודים\n- יצירת תוכן על ידי ה-AI\n- עדכון ה-state עם העמוד החדש",
+      "successCriteria": [
+        "בקשה בצ'אט יוצרת עמוד חדש",
+        "התוכן נכתב בסגנון הספר",
+        "העמוד מתווסף לפרק הנכון"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "OpenAI Function Calling",
+          "url": "https://platform.openai.com/docs/guides/function-calling",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "הוסף tool חדש בשם addPage עם פרמטרים: chapterId, title, content",
+          "pointsPenalty": 10
+        },
+        {
+          "level": 2,
+          "text": "תן ל-AI לכתוב את התוכן - העבר לו את ההקשר של הספר",
+          "pointsPenalty": 15
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-003",
+      "title": "מחיקת עמודים דרך הצ'אט",
+      "description": "כמשתמש, אני רוצה לבקש מנעמי למחוק עמוד מהספר שלי דרך הצ'אט.",
+      "points": 50,
+      "difficulty": "beginner",
+      "category": "crud",
+      "tags": ["chat", "delete", "ai-agent"],
+      "instructions": "## הסיפור\n\nכמשתמש שכותב ספר, לפעמים אני רוצה למחוק עמוד שלא מתאים יותר. אכתוב בצ'אט:\n\n> \"נעמי, מחקי את העמוד 'נוף הבוקר' מהפרק הראשון\"\n\nנעמי תבקש אישור, ואחרי שאאשר - תמחק את העמוד.\n\n## מה צריך לקרות\n\n- המשתמש מבקש למחוק עמוד בצ'אט\n- נעמי מזהה את העמוד הרלוונטי\n- נעמי מבקשת אישור לפני המחיקה\n- לאחר האישור, העמוד נמחק\n- השינוי נשמר ומוצג\n\n## רקע טכני\n\nהמימוש דורש:\n- הוספת tool לmחיקה ב-function calling\n- מנגנון אישור בצ'אט\n- עדכון ה-state וה-localStorage",
+      "successCriteria": [
+        "בקשת מחיקה בצ'אט מפעילה את התהליך",
+        "נעמי מבקשת אישור לפני מחיקה",
+        "העמוד נמחק לאחר האישור",
+        "השינוי נשמר גם לאחר refresh"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "Vercel AI SDK - Tool Calling",
+          "url": "https://sdk.vercel.ai/docs/ai-sdk-core/tools-and-tool-calling",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "הוסף tool בשם deletePage שמקבל pageId",
+          "pointsPenalty": 5
+        },
+        {
+          "level": 2,
+          "text": "השתמש ב-confirmation message לפני ביצוע המחיקה",
+          "pointsPenalty": 10
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-004",
+      "title": "נעמי ממשיכה את הסיפור",
+      "description": "כמשתמש, אני רוצה לבקש מנעמי להמשיך לכתוב את הסיפור שלי בסגנון שכבר קיים.",
+      "points": 150,
+      "difficulty": "intermediate",
+      "category": "ai",
+      "tags": ["chat", "ai-agent", "writing", "content-generation"],
+      "instructions": "## הסיפור\n\nכמשתמש שכותב ספר, אני רוצה שנעמי תמשיך לכתוב את הסיפור שלי. אכתוב בצ'אט:\n\n> \"נעמי, המשיכי את העמוד 'בוקר חדש' - הוסיפי סצנה שבה רונית יוצאת מהבית ופוגשת את השכנה\"\n\nנעמי תקרא את התוכן הקיים, תבין את הסגנון, ותמשיך לכתוב בהרמוניה.\n\n## מה צריך לקרות\n\n- המשתמש מבקש המשך לסיפור\n- נעמי קוראת את התוכן הקיים\n- נעמי מזהה את סגנון הכתיבה\n- נעמי כותבת המשך מתאים\n- התוכן החדש מתווסף לעמוד\n\n## רקע טכני\n\nהמימוש דורש:\n- העברת context (התוכן הקיים) ל-AI\n- system prompt שמנחה את הסגנון\n- function calling לעדכון העמוד",
+      "successCriteria": [
+        "בקשה בצ'אט מפעילה כתיבה אוטומטית",
+        "התוכן החדש מתאים לסגנון הקיים",
+        "נעמי שומרת על עקביות עם הדמויות והעלילה",
+        "התוכן מתעדכן בעמוד הנכון"
+      ],
+      "dependencies": ["ch-001"],
+      "resources": [
+        {
+          "title": "Vercel AI SDK",
+          "url": "https://sdk.vercel.ai/docs",
+          "type": "docs"
+        },
+        {
+          "title": "OpenAI Function Calling",
+          "url": "https://platform.openai.com/docs/guides/function-calling",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "העבר את התוכן הקיים כ-context ב-system prompt",
+          "pointsPenalty": 10
+        },
+        {
+          "level": 2,
+          "text": "הוסף הנחיות לסגנון: 'כתוב בסגנון הסיפור הקיים, שמור על אותה קצב ואווירה'",
+          "pointsPenalty": 20
+        },
+        {
+          "level": 3,
+          "text": "השתמש בבסיס הידע (דמויות, מיקומים) כדי לשמור על עקביות",
+          "pointsPenalty": 30
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Function Calling"]
+    },
+    {
+      "id": "ch-005",
+      "title": "נעמי מקריאה את הסיפור",
+      "description": "כמשתמש, אני רוצה לבקש מנעמי להקריא לי את העמוד הנוכחי בקול.",
+      "points": 150,
+      "difficulty": "intermediate",
+      "category": "voice",
+      "tags": ["chat", "voice", "ai-agent", "elevenlabs"],
+      "instructions": "## הסיפור\n\nכמשתמש שקורא ספר, לפעמים אני רוצה להקשיב במקום לקרוא. אכתוב בצ'אט:\n\n> \"נעמי, הקריאי לי את העמוד הנוכחי\"\n\nנעמי תקריא את הטקסט בקול נעים ובהגייה עברית תקנית.\n\n## מה צריך לקרות\n\n- המשתמש מבקש הקראה בצ'אט\n- נעמי מזהה את העמוד הנוכחי\n- נעמי מפעילה הקראה קולית\n- המשתמש יכול לעצור את ההקראה\n\n## רקע טכני\n\nהמימוש דורש:\n- חיבור ל-ElevenLabs API\n- API route להמרת טקסט לאודיו\n- function calling להפעלת ההקראה",
+      "successCriteria": [
+        "בקשה בצ'אט מפעילה הקראה",
+        "ההקראה בעברית תקנית",
+        "אפשר לעצור את ההקראה",
+        "אינדיקציה ויזואלית שנעמי מקריאה"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "ElevenLabs API Docs",
+          "url": "https://docs.elevenlabs.io/api-reference",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "השתמש במודל eleven_multilingual_v2 - תומך בעברית",
+          "pointsPenalty": 10
+        },
+        {
+          "level": 2,
+          "text": "צור API route שמחזיר audio stream ונגן עם Audio element",
+          "pointsPenalty": 15
+        }
+      ],
+      "techStack": ["ElevenLabs API", "Vercel AI SDK", "Web Audio API"]
+    },
+    {
+      "id": "ch-006",
+      "title": "נעמי בודקת את הכתיבה",
+      "description": "כמשתמש, אני רוצה לבקש מנעמי לבדוק את הכתיבה שלי ולתת משוב על סגנון ועקביות.",
+      "points": 200,
+      "difficulty": "advanced",
+      "category": "review",
+      "tags": ["chat", "ai-agent", "feedback", "quality"],
+      "instructions": "## הסיפור\n\nכמשתמש שכותב ספר, אני רוצה לקבל משוב על הכתיבה שלי. אכתוב בצ'אט:\n\n> \"נעמי, בדקי את העמוד הנוכחי ותני לי משוב על הכתיבה\"\n\nנעמי תקרא את הטקסט, תבדוק סגנון, עקביות עם הדמויות, ותיתן משוב בונה.\n\n## מה צריך לקרות\n\n- המשתמש מבקש משוב בצ'אט\n- נעמי קוראת את התוכן\n- נעמי משתמשת בבסיס הידע לבדיקת עקביות\n- נעמי נותנת משוב מפורט עם הצעות לשיפור\n\n## דוגמאות לבקשות\n\n- \"נעמי, האם יש בעיות עקביות בעמוד הזה?\"\n- \"נעמי, בדקי שהדמויות מתנהגות בהתאם לאופי שהגדרתי\"\n- \"נעמי, מה את חושבת על קצב הסיפור בפרק הזה?\"\n\n## רקע טכני\n\nהמימוש דורש:\n- גישה לבסיס הידע (דמויות, מיקומים, סגנון)\n- system prompt שמגדיר את נעמי כעורכת\n- structured output למשוב מסודר",
+      "successCriteria": [
+        "בקשה בצ'אט מחזירה משוב מפורט",
+        "המשוב מתייחס לסגנון הכתיבה",
+        "נעמי בודקת עקביות עם בסיס הידע",
+        "הצעות לשיפור ברורות ושימושיות"
+      ],
+      "dependencies": ["ch-004"],
+      "resources": [
+        {
+          "title": "OpenAI Structured Outputs",
+          "url": "https://platform.openai.com/docs/guides/structured-outputs",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "העבר את בסיס הידע כ-context לנעמי כדי שתוכל לבדוק עקביות",
+          "pointsPenalty": 15
+        },
+        {
+          "level": 2,
+          "text": "השתמש ב-structured output כדי לקבל משוב מסודר: חוזקות, חולשות, הצעות",
+          "pointsPenalty": 25
+        },
+        {
+          "level": 3,
+          "text": "חלק את הבדיקה: סגנון, עקביות דמויות, קצב, דיאלוגים",
+          "pointsPenalty": 35
+        }
+      ],
+      "techStack": ["Vercel AI SDK", "OpenAI", "Structured Outputs"]
+    },
+    {
+      "id": "ch-007",
+      "title": "נעמי מדברת באנגלית",
+      "description": "כמשתמש דובר אנגלית, אני רוצה להשתמש באפליקציה ולדבר עם נעמי באנגלית.",
+      "points": 100,
+      "difficulty": "intermediate",
+      "category": "i18n",
+      "tags": ["i18n", "chat", "language", "ai-agent"],
+      "instructions": "## הסיפור\n\nכמשתמש שמעדיף אנגלית, אני רוצה:\n- לראות את הממשק באנגלית\n- לדבר עם נעמי באנגלית\n- שנעמי תבין ותענה לי באנגלית\n\n## מה צריך לקרות\n\n- כפתור החלפת שפה בממשק\n- הממשק עובר לאנגלית (LTR)\n- נעמי מזהה את שפת המשתמש\n- נעמי עונה בשפה המתאימה\n\n## דוגמה לשיחה באנגלית\n\n> User: \"Naomi, add a new page about the character meeting a stranger\"\n> Naomi: \"I'll add a new page to the current chapter. Here's what I wrote...\"\n\n## רקע טכני\n\nהמימוש דורש:\n- ספריית i18n (next-intl)\n- קבצי תרגום לממשק\n- העברת שפה נבחרת ל-system prompt של נעמי",
+      "successCriteria": [
+        "החלפת שפה בממשק עובדת",
+        "הממשק מוצג באנגלית/עברית לפי הבחירה",
+        "נעמי מגיבה בשפה המתאימה",
+        "RTL/LTR משתנים לפי השפה"
+      ],
+      "dependencies": [],
+      "resources": [
+        {
+          "title": "next-intl Documentation",
+          "url": "https://next-intl-docs.vercel.app/",
+          "type": "docs"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "text": "הוסף את השפה הנבחרת ל-system prompt של נעמי",
+          "pointsPenalty": 10
+        },
+        {
+          "level": 2,
+          "text": "השתמש ב-next-intl עם App Router - הכי פשוט ל-Next.js",
+          "pointsPenalty": 15
+        }
+      ],
+      "techStack": ["next-intl", "Vercel AI SDK", "OpenAI"]
+    }
+  ],
+  "techGuides": [
+    {
+      "id": "guide-001",
+      "slug": "project-overview",
+      "title": "סקירת הפרויקט",
+      "description": "הכר לעומק את AI Story Writer - אפליקציית כתיבת ספרים עם סוכן AI",
+      "category": "architecture",
+      "content": "# AI Story Writer - סקירה מלאה\n\n## מה זה?\n\nאפליקציה מלאה לכתיבת ספרים וסיפורים עם סוכן AI בשם **נעמי**. האפליקציה היא חלק מ-Singularity Bridge - פלטפורמה ללמידת פיתוח AI דרך חוויות אמיתיות.\n\n## עקרון מפתח: הכל דרך הצ'אט\n\n**חשוב להבין:** האפליקציה בנויה סביב רעיון אחד - **כל הפעולות מתבצעות דרך שיחה עם נעמי**.\n\nבמקום כפתורי עריכה, הוספה ומחיקה - המשתמש פשוט מבקש מנעמי:\n- \"נעמי, עדכני את העמוד הזה - שני את השם לדנה\"\n- \"נעמי, הוסיפי עמוד חדש עם סצנה בבית קפה\"\n- \"נעמי, מחקי את העמוד האחרון\"\n- \"נעמי, הקריאי לי את הסיפור\"\n\nזהו AI Agent Experience - חוויה שבה ה-AI עושה את העבודה.\n\n## תכונות מרכזיות\n\n### 1. ספריית ספרים\n- תצוגת grid של 4 ספרים לדוגמה\n- כרטיסי ספר עם תמונות עטיפה\n- ניווט לקריאה\n\n### 2. קורא ספרים (Book Reader)\n- **תצוגת 3 פאנלים**:\n  - שמאל: ניווט פרקים ועמודים\n  - מרכז: תוכן העמוד\n  - ימין: צ'אט עם נעמי\n- תמיכה בעמודי טקסט ותמונות\n- הקראה קולית (דרך נעמי)\n\n### 3. בסיס ידע (Knowledge Base)\n- **Characters**: דמויות עם תכונות, קשרים וסיפור רקע\n- **Knowledge Items**: מידע על מיקומים, עלילה, עולם\n- נעמי משתמשת בבסיס הידע כדי לשמור על עקביות\n\n### 4. צ'אט עם נעמי\n- **זה הליבה של האפליקציה**\n- נעמי מבינה הקשר (איזה ספר, פרק, עמוד)\n- נעמי יכולה: לערוך, להוסיף, למחוק, להקריא\n- נעמי משתמשת בבסיס הידע לעקביות\n\n## מבנה הפרויקט\n\n```\nsrc/\n├── app/\n│   ├── page.tsx              # דף הבית\n│   ├── book/\n│   │   └── [id]/\n│   │       ├── page.tsx      # קורא ספרים + צ'אט\n│   │       └── knowledge/    # בסיס ידע\n│   ├── api/\n│   │   └── book/[id]/route.ts\n│   └── academy/              # האקדמיה\n├── components/\n│   └── ChatAssistant.tsx     # רכיב הצ'אט\n├── lib/\n│   └── data.ts               # שכבת נתונים\n└── data/\n    └── db.json               # מסד נתונים\n```\n\n## מודלים של נתונים\n\n### Book\n- id, title, subtitle, description\n- genre, author, coverImage\n\n### Chapter\n- id, bookId, title, order\n\n### Page\n- id, chapterId, type ('text' | 'image')\n- title, content, order\n\n### Character\n- id, bookId, name, description\n- role, traits[], backstory\n- relationships[]\n\n### KnowledgeItem\n- id, bookId, title, content\n- category, tags[]\n\n## מה לממש באקדמיה\n\nהממשק קיים ומלא - מה שחסר זה החיבור ל-AI:\n\n- **ch-001**: עריכת עמודים דרך הצ'אט\n- **ch-002**: הוספת עמודים דרך הצ'אט\n- **ch-003**: מחיקת עמודים דרך הצ'אט\n- **ch-004**: נעמי ממשיכה את הסיפור\n- **ch-005**: הקראה קולית דרך הצ'אט\n- **ch-006**: נעמי בודקת את הכתיבה\n- **ch-007**: תמיכה רב-לשונית\n\nכל המשימות מתמקדות ב-**חיבור נעמי ל-AI אמיתי** כדי שתוכל לבצע פעולות.",
+      "order": 1,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-002", "guide-003", "guide-005"],
+      "icon": "BookOpen"
+    },
+    {
+      "id": "guide-002",
+      "slug": "tech-stack",
+      "title": "Tech Stack - הטכנולוגיות",
+      "description": "סקירת מלאה של כל הטכנולוגיות והספריות בפרויקט",
+      "category": "tech-stack",
+      "content": "# Tech Stack\n\n## Frontend Core\n\n### Next.js 16\nהגרסה החדשה של Next.js עם:\n- **App Router** - Server Components כברירת מחדל\n- **API Routes** - יצירת endpoints בקלות\n- **Image Optimization** - טעינת תמונות אופטימלית\n- **Turbopack** - bundler מהיר יותר\n\n```typescript\n// src/app/page.tsx\nexport default function HomePage() {\n  return <div>Hello World</div>;\n}\n```\n\n### React 19\nהגרסה החדשה של React:\n- Server Components\n- Concurrent Features\n- Improved Hooks\n\n### TypeScript 5.x\nType safety מלא:\n```typescript\ninterface Book {\n  id: string;\n  title: string;\n  chapters: Chapter[];\n}\n\ninterface Page {\n  type: 'text' | 'image';\n  content: string;\n}\n```\n\n### Tailwind CSS 4\nUtility-first styling:\n```tsx\n<div className=\"bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg transition-all\">\n  <h2 className=\"text-xl font-bold text-slate-900\">Title</h2>\n</div>\n```\n\n### Lucide React\nספריית אייקונים מודרנית:\n```tsx\nimport { BookOpen, Bot, Sparkles } from 'lucide-react';\n\n<Bot className=\"w-5 h-5 text-purple-600\" />\n```\n\n### Google Fonts\nשלושה פונטים בשימוש:\n- **Heebo** - UI עברי\n- **Frank Ruhl Libre** - תוכן ספרותי (serif)\n- **Inter** - טקסט טכני\n\n## AI & APIs (למשימות)\n\n### Vercel AI SDK\n```typescript\nimport { generateText, tool } from 'ai';\nimport { openai } from '@ai-sdk/openai';\n\nconst result = await generateText({\n  model: openai('gpt-4o-mini'),\n  prompt: 'Write a story continuation...',\n});\n```\n\n### OpenAI GPT-4.1\n- **gpt-4o-mini** - מהיר וזול, מושלם ללמידה\n- **gpt-4o** - מתקדם יותר\n- **Function Calling** - לסוכנים\n\n### ElevenLabs\nהקראה קולית בעברית:\n```typescript\nconst response = await fetch(\n  'https://api.elevenlabs.io/v1/text-to-speech/VOICE_ID',\n  {\n    headers: { 'xi-api-key': API_KEY },\n    body: JSON.stringify({\n      text: content,\n      model_id: 'eleven_multilingual_v2'\n    })\n  }\n);\n```\n\n### fal.ai\nיצירת תמונות לסיפורים:\n```typescript\nimport { fal } from '@fal-ai/serverless-client';\n\nconst result = await fal.subscribe('fal-ai/flux', {\n  input: { prompt: 'A magical forest scene' }\n});\n```\n\n## State Management\n\n### React useState/useEffect\nניהול state מקומי:\n```typescript\nconst [book, setBook] = useState<Book | null>(null);\nconst [selectedPage, setSelectedPage] = useState<Page | null>(null);\n\nuseEffect(() => {\n  fetchBookData();\n}, [bookId]);\n```\n\n### localStorage\nשמירה מקומית:\n```typescript\nlocalStorage.setItem(`book_${bookId}`, JSON.stringify(book));\nconst saved = localStorage.getItem(`book_${bookId}`);\n```\n\n## Data Layer\n\n### Static JSON Database\nקובץ `db.json` עם כל הנתונים:\n```typescript\nimport dbData from '@/data/db.json';\n\nexport function getBooks(): Book[] {\n  return db.books;\n}\n```",
+      "order": 2,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-001", "guide-004"],
+      "icon": "Code2"
+    },
+    {
+      "id": "guide-003",
+      "slug": "vibe-coding",
+      "title": "מה זה Vibe Coding?",
+      "description": "הכר את גישת הפיתוח החדשה עם AI",
+      "category": "concepts",
+      "content": "# Vibe Coding - פיתוח עם AI\n\n## מה זה?\n\nVibe Coding היא גישת פיתוח שבה אתה עובד **יחד** עם AI כשותף לקידוד.\n\n## איך זה עובד?\n\n1. **תאר מה אתה רוצה** - בשפה טבעית\n\n2. **ה-AI מציע קוד** - תבדוק ותלמד\n\n3. **שפר יחד** - iterate עד שזה עובד\n\n4. **הבן מה קרה** - למד מהתהליך\n\n## כלים מומלצים\n\n- **Claude Code** - מבית Anthropic\n\n- **Cursor** - IDE עם AI\n\n- **GitHub Copilot** - הצעות קוד\n\n## טיפים\n\n- תן context מספק\n\n- שאל שאלות\n\n- אל תקבל כל דבר - בדוק!\n\n- למד מהטעויות",
+      "order": 3,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": [],
+      "icon": "Sparkles"
+    },
+    {
+      "id": "guide-004",
+      "slug": "mcp-intro",
+      "title": "מבוא ל-MCP",
+      "description": "Model Context Protocol - איך AI מתחבר לכלים",
+      "category": "concepts",
+      "content": "# MCP - Model Context Protocol\n\n## מה זה?\n\nMCP הוא פרוטוקול שמאפשר למודלי AI להתחבר לכלים וdata sources חיצוניים.\n\n## למה זה חשוב?\n\n- AI יכול לגשת לקבצים\n- AI יכול להריץ פקודות\n- AI יכול לקרוא מ-APIs\n\n## דוגמה\n\n```json\n{\n  \"mcpServers\": {\n    \"filesystem\": {\n      \"command\": \"npx\",\n      \"args\": [\"@anthropic/mcp-server-filesystem\", \"/path\"]\n    }\n  }\n}\n```\n\n## MCP Servers נפוצים\n\n- **filesystem** - גישה לקבצים\n- **github** - גישה ל-GitHub\n- **postgres** - גישה ל-DB\n- **brave-search** - חיפוש באינטרנט",
+      "order": 4,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-003"],
+      "icon": "Plug"
+    },
+    {
+      "id": "guide-005",
+      "slug": "expansion-ideas",
+      "title": "Singularity Bridge - הרחבות עתידיות",
+      "description": "חוויות AI נוספות וכיוונים להרחבת הפלטפורמה",
+      "category": "roadmap",
+      "content": "# Singularity Bridge - חוויות AI עתידיות\n\n## הרעיון\n\nSingularity Bridge היא פלטפורמה ללמידת פיתוח AI דרך **חוויות אמיתיות**. כל אפליקציה שנבנה:\n- עובדת באמת (לא רק demo)\n- מלמדת מושגי AI ופיתוח\n- מקושרת לאקדמיה עם משימות\n\n## החוויה הראשונה: AI Story Writer\n\nכבר קיימת! כותב סיפורים עם:\n- **נעמי** - סוכן AI לכתיבה\n- **Knowledge Base** - בסיס ידע לדמויות ועלילה\n- **Voice-over** - הקראה קולית\n\n---\n\n## חוויות בדרך\n\n### 1. AI Voice Assistant\n**סוג:** שיחה קולית אינטראקטיבית\n\n**תכונות:**\n- שיחה בזמן אמת עם AI\n- תמיכה בעברית ואנגלית\n- פקודות קוליות לביצוע פעולות\n- Client-side function calling\n\n**טכנולוגיות:**\n- ElevenLabs Conversational AI\n- VAPI Voice Agents\n- OpenAI Realtime API\n\n---\n\n### 2. AI Image Studio\n**סוג:** יצירת ועריכת תמונות עם AI\n\n**תכונות:**\n- יצירת תמונות מטקסט\n- עריכת תמונות קיימות\n- שינוי סגנון (style transfer)\n- הסרת/הוספת אובייקטים\n\n**טכנולוגיות:**\n- fal.ai FLUX models\n- Stable Diffusion\n- Controlnet לעריכה מדויקת\n\n---\n\n### 3. AI Data Analyst\n**סוג:** ניתוח נתונים עם שיחה\n\n**תכונות:**\n- העלאת קבצי CSV/Excel\n- שאלות בשפה טבעית\n- יצירת גרפים אוטומטית\n- תובנות וסיכומים\n\n**טכנולוגיות:**\n- Code Interpreter (OpenAI)\n- Claude Artifacts\n- Chart.js / Recharts\n\n---\n\n### 4. AI Meeting Assistant\n**סוג:** עוזר פגישות חכם\n\n**תכונות:**\n- תמלול בזמן אמת\n- סיכום אוטומטי\n- זיהוי action items\n- יצירת follow-up tasks\n\n**טכנולוגיות:**\n- Whisper לתמלול\n- GPT לסיכום\n- Calendar API\n\n---\n\n### 5. AI Form Builder\n**סוג:** בניית טפסים חכמים\n\n**תכונות:**\n- יצירת טופס מתיאור\n- ולידציה חכמה\n- מילוי אוטומטי\n- Multi-step wizard\n\n**טכנולוגיות:**\n- Structured Outputs\n- Zod schemas\n- React Hook Form\n\n---\n\n## מבנה כל חוויה\n\nכל אפליקציה ב-Singularity Bridge תכלול:\n\n```\n/experience-name\n├── README.md\n├── /src\n└── /academy\n    ├── challenges/\n    ├── guides/\n    └── badges/\n```\n\n## עקרונות הפיתוח\n\n1. **Real First** - כל אפליקציה עובדת באמת\n2. **Learn by Doing** - למידה דרך בנייה\n3. **Progressive** - מקל למורכב\n4. **Production Ready** - קוד באיכות גבוהה",
+      "order": 5,
+      "updatedAt": "2025-12-06",
+      "relatedGuides": ["guide-001", "guide-002"],
+      "icon": "Rocket"
+    }
+  ],
+  "aiToolSetups": [
+    {
+      "id": "tool-001",
+      "slug": "claude-code",
+      "toolName": "Claude Code",
+      "description": "כלי AI לקידוד מבית Anthropic - עובד ישירות בטרמינל",
+      "icon": "Terminal",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "התקנה",
+          "instructions": "התקן את Claude Code באמצעות npm:",
+          "codeSnippet": "npm install -g @anthropic-ai/claude-code",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "הגדרת API Key",
+          "instructions": "הגדר את ה-API key של Anthropic:",
+          "codeSnippet": "export ANTHROPIC_API_KEY=your-key-here",
+          "language": "bash"
+        },
+        {
+          "order": 3,
+          "title": "הפעלה",
+          "instructions": "הפעל את Claude Code בתיקיית הפרויקט:",
+          "codeSnippet": "cd /path/to/project\nclaude",
+          "language": "bash"
+        }
+      ],
+      "recommendedConfig": "{\n  \"permissions\": {\n    \"allow\": [\"Read\", \"Write\", \"Bash\"]\n  }\n}",
+      "usageTips": [
+        "תן context ברור - הסבר מה המטרה",
+        "השתמש ב-/help לראות פקודות",
+        "בדוק קוד לפני שאתה מאשר",
+        "השתמש ב-CLAUDE.md להגדרות פרויקט"
+      ],
+      "officialDocs": "https://docs.anthropic.com/claude-code"
+    },
+    {
+      "id": "tool-002",
+      "slug": "cursor",
+      "toolName": "Cursor IDE",
+      "description": "IDE עם AI מובנה - מבוסס על VS Code",
+      "icon": "Code",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "הורדה",
+          "instructions": "הורד את Cursor מהאתר הרשמי:",
+          "codeSnippet": "# לך ל: https://cursor.sh\n# הורד והתקן",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "הגדרת מודל",
+          "instructions": "פתח Settings וב הגדר את המודל המועדף:",
+          "codeSnippet": "# Settings > Models > Claude 3.5 Sonnet",
+          "language": "text"
+        },
+        {
+          "order": 3,
+          "title": "קיצורי מקלדת",
+          "instructions": "הכר את קיצורי המקלדת החשובים:",
+          "codeSnippet": "Cmd+K - פתח AI chat\nCmd+L - שאל על קוד נבחר\nCmd+Shift+K - edit inline",
+          "language": "text"
+        }
+      ],
+      "recommendedConfig": "{}",
+      "usageTips": [
+        "השתמש ב-Cmd+K לשאלות מהירות",
+        "סמן קוד ושאל עליו",
+        "השתמש ב-@file להפניה לקבצים",
+        "צור .cursorrules להגדרות פרויקט"
+      ],
+      "officialDocs": "https://cursor.sh/docs"
+    },
+    {
+      "id": "tool-003",
+      "slug": "github-copilot",
+      "toolName": "GitHub Copilot",
+      "description": "עוזר AI לקוד מבית GitHub - עובד בכל IDE",
+      "icon": "Github",
+      "setupSteps": [
+        {
+          "order": 1,
+          "title": "הרשמה",
+          "instructions": "הירשם ל-GitHub Copilot:",
+          "codeSnippet": "# לך ל: https://github.com/features/copilot\n# הירשם (יש תקופת ניסיון)",
+          "language": "bash"
+        },
+        {
+          "order": 2,
+          "title": "התקנת Extension",
+          "instructions": "התקן את ה-extension ב-VS Code:",
+          "codeSnippet": "# Extensions > Search: GitHub Copilot\n# Install",
+          "language": "text"
+        },
+        {
+          "order": 3,
+          "title": "התחברות",
+          "instructions": "התחבר עם חשבון GitHub:",
+          "codeSnippet": "# לחץ על Sign in to GitHub\n# אשר את ההתחברות",
+          "language": "text"
+        }
+      ],
+      "recommendedConfig": "{}",
+      "usageTips": [
+        "כתוב הערות לפני קוד - Copilot ישלים",
+        "Tab לקבלת הצעה, Esc לדחייה",
+        "Alt+] ו-Alt+[ למעבר בין הצעות",
+        "Copilot Chat לשאלות מורכבות"
+      ],
+      "officialDocs": "https://docs.github.com/copilot"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-first-steps",
+      "name": "צעדים ראשונים",
+      "description": "השלמת המשימה הראשונה",
+      "icon": "Star",
+      "criteria": "השלמת משימה beginner אחת"
+    },
+    {
+      "id": "badge-crud-master",
+      "name": "מאסטר CRUD",
+      "description": "השלמת את כל משימות ה-CRUD",
+      "icon": "Database",
+      "criteria": "השלמת משימות ch-001, ch-002, ch-003",
+      "requiredChallenges": ["ch-001", "ch-002", "ch-003"]
+    },
+    {
+      "id": "badge-ai-pioneer",
+      "name": "חלוץ AI",
+      "description": "השלמת משימת AI agent",
+      "icon": "Bot",
+      "criteria": "השלמת משימה ch-004",
+      "requiredChallenges": ["ch-004"]
+    },
+    {
+      "id": "badge-voice-enabled",
+      "name": "נותן קול",
+      "description": "הוספת יכולות קוליות לאפליקציה",
+      "icon": "Mic",
+      "criteria": "השלמת משימה ch-005",
+      "requiredChallenges": ["ch-005"]
+    },
+    {
+      "id": "badge-quality-guard",
+      "name": "שומר האיכות",
+      "description": "בנית מערכת review",
+      "icon": "Shield",
+      "criteria": "השלמת משימה ch-006",
+      "requiredChallenges": ["ch-006"]
+    },
+    {
+      "id": "badge-global",
+      "name": "גלובלי",
+      "description": "הוספת תמיכה רב-לשונית",
+      "icon": "Globe",
+      "criteria": "השלמת משימה ch-007",
+      "requiredChallenges": ["ch-007"]
+    },
+    {
+      "id": "badge-completionist",
+      "name": "משלים משימות",
+      "description": "השלמת את כל המשימות!",
+      "icon": "Trophy",
+      "criteria": "השלמת כל 7 המשימות",
+      "requiredPoints": 800
+    }
+  ],
+  "userProgress": []
+}

@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Writer Buddy: Implementation Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .terminal {
+            background: #0f172a;
+            color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal .prompt { color: #22d3ee; }
+        .terminal .comment { color: #475569; }
+        .terminal .success { color: #86efac; }
+
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .code-block .keyword { color: #c084fc; }
+        .code-block .string { color: #86efac; }
+        .code-block .comment { color: #64748b; }
+        .code-block .number { color: #fbbf24; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+        <!-- Header -->
+        <header class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-900">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                    <path d="m9 9.5 2 2 4-4"/>
+                </svg>
+                <h1 class="text-4xl font-light">AI Writer Buddy</h1>
+            </div>
+            <p class="text-slate-600 text-lg ml-11">Hebrew RTL Book Writing Application with AI Assistant</p>
+
+            <div class="flex gap-2 mt-4 ml-11">
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Next.js</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Hebrew RTL</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">AI Assistant</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">No Build Process</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">fal.ai Integration</span>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <h2 class="text-2xl font-light">Executive Summary</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ml-9">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Project Vision</h3>
+                    <p class="text-sm text-slate-600">A Hebrew-first book writing platform with integrated AI assistance for content creation, editing, and cover generation. Built without a build process for maximum simplicity and developer experience.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Technical Approach</h3>
+                    <p class="text-sm text-slate-600">Shoelace + Alpine.js architecture with Tailwind via CDN. All dependencies loaded from CDN, no npm build step required. Data stored in lowdb for simplicity.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Key Innovation</h3>
+                    <p class="text-sm text-slate-600">AI-generated book covers using fal.ai's Flux model, real-time AI writing assistance with contextual chat interface, full RTL support for Hebrew content.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Success Criteria</h3>
+                    <p class="text-sm text-slate-600">Authors can create, organize, and write books entirely in Hebrew with AI help. Cover generation takes <5 seconds. Chat responses feel natural and contextual.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 11l3 3L22 4"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+                <h2 class="text-2xl font-light">Requirements & User Stories</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <span class="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs font-medium">US-01</span>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-sm mb-1">Book Discovery</h3>
+                            <p class="text-sm text-slate-600 mb-2">As an <strong>author</strong>, I want to <strong>view all my books in a grid layout</strong> so that I can <strong>quickly find and access my writing projects</strong>.</p>
+                            <div class="text-xs text-slate-500 space-y-1">
+                                <div><strong>Acceptance:</strong></div>
+                                <ul class="list-disc list-inside ml-2">
+                                    <li>Books display with cover, title, and subtitle</li>
+                                    <li>Grid is responsive (1-3 columns based on screen size)</li>
+                                    <li>Clicking a book navigates to book detail page</li>
+                                    <li>Hebrew text displays correctly RTL</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <span class="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs font-medium">US-02</span>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-sm mb-1">Book Editing with AI</h3>
+                            <p class="text-sm text-slate-600 mb-2">As an <strong>author</strong>, I want to <strong>write book content with an AI assistant sidebar</strong> so that I can <strong>get real-time help with writing, editing, and ideas</strong>.</p>
+                            <div class="text-xs text-slate-500 space-y-1">
+                                <div><strong>Acceptance:</strong></div>
+                                <ul class="list-disc list-inside ml-2">
+                                    <li>Two-column layout: content (2/3) + chat (1/3)</li>
+                                    <li>Chat shows AI avatar and name</li>
+                                    <li>Messages styled with bubbles (user/AI different)</li>
+                                    <li>Chat persists per book context</li>
+                                    <li>Input area supports Hebrew RTL</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <span class="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs font-medium">US-03</span>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-sm mb-1">Chapter & Page Navigation</h3>
+                            <p class="text-sm text-slate-600 mb-2">As an <strong>author</strong>, I want to <strong>navigate between chapters and pages easily</strong> so that I can <strong>organize my book structure efficiently</strong>.</p>
+                            <div class="text-xs text-slate-500 space-y-1">
+                                <div><strong>Acceptance:</strong></div>
+                                <ul class="list-disc list-inside ml-2">
+                                    <li>Left sidebar shows chapter/page tree</li>
+                                    <li>Clicking navigates without full page reload</li>
+                                    <li>Active page highlighted in navigation</li>
+                                    <li>Supports text pages and image pages</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <span class="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs font-medium">US-04</span>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-sm mb-1">AI Cover Generation</h3>
+                            <p class="text-sm text-slate-600 mb-2">As an <strong>author</strong>, I want to <strong>generate book covers using AI</strong> so that I can <strong>have professional covers without design skills</strong>.</p>
+                            <div class="text-xs text-slate-500 space-y-1">
+                                <div><strong>Acceptance:</strong></div>
+                                <ul class="list-disc list-inside ml-2">
+                                    <li>Trigger cover generation from book metadata</li>
+                                    <li>Uses fal.ai Flux model via API</li>
+                                    <li>Shows loading state during generation</li>
+                                    <li>Cover updates automatically when ready</li>
+                                    <li>Supports regeneration if unsatisfied</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Architecture -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                    <path d="M7 7h10"/>
+                    <path d="M7 12h10"/>
+                    <path d="M7 17h10"/>
+                </svg>
+                <h2 class="text-2xl font-light">Technical Architecture</h2>
+            </div>
+
+            <div class="ml-9 space-y-6">
+                <div>
+                    <h3 class="font-medium mb-3">Project Structure</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># No build process - direct HTML/CSS/JS</div>
+                        <pre class="text-xs">ai-writer-buddy/
+├── index.html              <span class="comment"># Book list page</span>
+├── book.html               <span class="comment"># Book detail page template</span>
+├── css/
+│   └── styles.css          <span class="comment"># Custom styles (RTL, overrides)</span>
+├── js/
+│   ├── app.js              <span class="comment"># Main Alpine.js app logic</span>
+│   ├── db.js               <span class="comment"># lowdb wrapper</span>
+│   └── utils.js            <span class="comment"># Helpers (RTL, formatting)</span>
+├── data/
+│   └── db.json             <span class="comment"># lowdb database file</span>
+├── api/
+│   ├── cover.js            <span class="comment"># fal.ai cover generation</span>
+│   └── chat.js             <span class="comment"># AI chat endpoint</span>
+└── public/
+    └── covers/             <span class="comment"># Generated book covers</span></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">Technology Stack</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">Frontend Framework</div>
+                            <div class="text-sm">Alpine.js 3.x (CDN)</div>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">UI Components</div>
+                            <div class="text-sm">Shoelace (CDN)</div>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">Styling</div>
+                            <div class="text-sm">Tailwind CSS (CDN)</div>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">Icons</div>
+                            <div class="text-sm">Lucide Icons (CDN)</div>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">Database</div>
+                            <div class="text-sm">lowdb (JSON file-based)</div>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <div class="text-xs font-medium text-slate-500 mb-1">AI Services</div>
+                            <div class="text-sm">fal.ai (covers), OpenAI (chat)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">Data Flow Architecture</h3>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="text-sm space-y-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded bg-slate-200 flex items-center justify-center text-xs">1</div>
+                                <div class="flex-1">
+                                    <strong>User Interaction</strong>
+                                    <div class="text-xs text-slate-600">Alpine.js components respond to clicks, input</div>
+                                </div>
+                            </div>
+                            <div class="ml-10 text-slate-400">↓</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded bg-slate-200 flex items-center justify-center text-xs">2</div>
+                                <div class="flex-1">
+                                    <strong>Data Layer (db.js)</strong>
+                                    <div class="text-xs text-slate-600">CRUD operations on lowdb JSON file</div>
+                                </div>
+                            </div>
+                            <div class="ml-10 text-slate-400">↓</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded bg-slate-200 flex items-center justify-center text-xs">3</div>
+                                <div class="flex-1">
+                                    <strong>API Calls (when needed)</strong>
+                                    <div class="text-xs text-slate-600">fal.ai for covers, OpenAI for chat</div>
+                                </div>
+                            </div>
+                            <div class="ml-10 text-slate-400">↓</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded bg-slate-200 flex items-center justify-center text-xs">4</div>
+                                <div class="flex-1">
+                                    <strong>UI Update</strong>
+                                    <div class="text-xs text-slate-600">Alpine.js reactivity updates DOM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">RTL Hebrew Support Strategy</h3>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span><code class="text-xs bg-slate-200 px-1 py-0.5 rounded">dir="rtl"</code> on HTML root element</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Tailwind RTL utilities: <code class="text-xs bg-slate-200 px-1 py-0.5 rounded">rtl:text-right</code>, <code class="text-xs bg-slate-200 px-1 py-0.5 rounded">rtl:mr-4</code></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Hebrew Google Font: Rubik or Alef (supports Hebrew + Latin)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Chat bubbles: user on right (RTL equivalent of left), AI on left</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Navigation sidebar: positioned on right side for RTL</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Database Schema -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+                </svg>
+                <h2 class="text-2xl font-light">Database Schema (lowdb)</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div class="code-block p-4 rounded-lg text-sm">
+                    <div class="comment text-xs mb-3">// data/db.json structure</div>
+                    <pre class="text-xs"><span class="keyword">{</span>
+  <span class="string">"books"</span>: [
+    {
+      <span class="string">"id"</span>: <span class="string">"uuid-1"</span>,
+      <span class="string">"title"</span>: <span class="string">"הספר הראשון שלי"</span>,              <span class="comment">// Hebrew title</span>
+      <span class="string">"subtitle"</span>: <span class="string">"סיפור על חיים ואהבה"</span>,        <span class="comment">// Hebrew subtitle</span>
+      <span class="string">"description"</span>: <span class="string">"תיאור הספר..."</span>,           <span class="comment">// Book description</span>
+      <span class="string">"genre"</span>: <span class="string">"רומן"</span>,                        <span class="comment">// Genre</span>
+      <span class="string">"author"</span>: <span class="string">"שם המחבר"</span>,                   <span class="comment">// Author name</span>
+      <span class="string">"coverImage"</span>: <span class="string">"/public/covers/uuid-1.png"</span>, <span class="comment">// Generated cover path</span>
+      <span class="string">"coverPrompt"</span>: <span class="string">"romantic novel cover..."</span>,  <span class="comment">// Prompt used for generation</span>
+      <span class="string">"createdAt"</span>: <span class="string">"2025-12-06T10:00:00Z"</span>,
+      <span class="string">"updatedAt"</span>: <span class="string">"2025-12-06T10:00:00Z"</span>,
+      <span class="string">"chapters"</span>: [<span class="string">"chapter-uuid-1"</span>, <span class="string">"chapter-uuid-2"</span>]
+    }
+  ],
+
+  <span class="string">"chapters"</span>: [
+    {
+      <span class="string">"id"</span>: <span class="string">"chapter-uuid-1"</span>,
+      <span class="string">"bookId"</span>: <span class="string">"uuid-1"</span>,                    <span class="comment">// Foreign key to book</span>
+      <span class="string">"title"</span>: <span class="string">"פרק ראשון"</span>,                    <span class="comment">// Chapter title</span>
+      <span class="string">"order"</span>: <span class="number">1</span>,                              <span class="comment">// Chapter order</span>
+      <span class="string">"pages"</span>: [<span class="string">"page-uuid-1"</span>, <span class="string">"page-uuid-2"</span>]
+    }
+  ],
+
+  <span class="string">"pages"</span>: [
+    {
+      <span class="string">"id"</span>: <span class="string">"page-uuid-1"</span>,
+      <span class="string">"chapterId"</span>: <span class="string">"chapter-uuid-1"</span>,           <span class="comment">// Foreign key to chapter</span>
+      <span class="string">"type"</span>: <span class="string">"text"</span>,                         <span class="comment">// "text" or "image"</span>
+      <span class="string">"title"</span>: <span class="string">"התחלה חדשה"</span>,                  <span class="comment">// Page title</span>
+      <span class="string">"content"</span>: <span class="string">"תוכן העמוד בעברית..."</span>,      <span class="comment">// Page content (Hebrew)</span>
+      <span class="string">"order"</span>: <span class="number">1</span>
+    },
+    {
+      <span class="string">"id"</span>: <span class="string">"page-uuid-2"</span>,
+      <span class="string">"chapterId"</span>: <span class="string">"chapter-uuid-1"</span>,
+      <span class="string">"type"</span>: <span class="string">"image"</span>,
+      <span class="string">"title"</span>: <span class="string">"איור - נוף הרים"</span>,
+      <span class="string">"content"</span>: <span class="string">"תיאור התמונה..."</span>,
+      <span class="string">"imageUrl"</span>: <span class="string">"/public/images/page-uuid-2.jpg"</span>, <span class="comment">// Image path</span>
+      <span class="string">"order"</span>: <span class="number">2</span>
+    }
+  ],
+
+  <span class="string">"chatMessages"</span>: [
+    {
+      <span class="string">"id"</span>: <span class="string">"msg-uuid-1"</span>,
+      <span class="string">"bookId"</span>: <span class="string">"uuid-1"</span>,                    <span class="comment">// Context: which book</span>
+      <span class="string">"role"</span>: <span class="string">"user"</span>,                        <span class="comment">// "user" or "assistant"</span>
+      <span class="string">"content"</span>: <span class="string">"עזור לי לכתוב פרק חדש"</span>,      <span class="comment">// Message content</span>
+      <span class="string">"timestamp"</span>: <span class="string">"2025-12-06T10:30:00Z"</span>
+    },
+    {
+      <span class="string">"id"</span>: <span class="string">"msg-uuid-2"</span>,
+      <span class="string">"bookId"</span>: <span class="string">"uuid-1"</span>,
+      <span class="string">"role"</span>: <span class="string">"assistant"</span>,
+      <span class="string">"content"</span>: <span class="string">"בשמחה! בוא נתחיל..."</span>,
+      <span class="string">"timestamp"</span>: <span class="string">"2025-12-06T10:30:05Z"</span>
+    }
+  ]
+<span class="keyword">}</span></pre>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">Database Indexes & Relationships</h3>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm">
+                        <ul class="space-y-2">
+                            <li><strong>Books:</strong> Primary entity, no foreign keys</li>
+                            <li><strong>Chapters:</strong> <code class="text-xs bg-slate-200 px-1 rounded">bookId</code> → Books (many-to-one)</li>
+                            <li><strong>Pages:</strong> <code class="text-xs bg-slate-200 px-1 rounded">chapterId</code> → Chapters (many-to-one)</li>
+                            <li><strong>ChatMessages:</strong> <code class="text-xs bg-slate-200 px-1 rounded">bookId</code> → Books (many-to-one, scoped context)</li>
+                            <li><strong>Ordering:</strong> Use <code class="text-xs bg-slate-200 px-1 rounded">order</code> field for chapter/page sequence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Specifications -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+                <h2 class="text-2xl font-light">API Specifications</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div>
+                    <h3 class="font-medium mb-3 text-sm">Cover Generation API (fal.ai)</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Endpoint: api/cover.js</div>
+                        <div class="prompt">POST /api/cover</div>
+                        <div class="text-xs mt-3">
+                            <div class="comment">→ Request Body:</div>
+                            <pre class="ml-4 mt-1">{
+  "bookId": "uuid-1",
+  "prompt": "A romantic novel cover with mountains at sunset,
+             watercolor style, soft colors, Hebrew title placeholder"
+}</pre>
+                        </div>
+                        <div class="text-xs mt-3">
+                            <div class="comment">→ Response (200 OK):</div>
+                            <pre class="success ml-4 mt-1">{
+  "success": true,
+  "coverUrl": "/public/covers/uuid-1.png",
+  "generatedAt": "2025-12-06T10:35:00Z"
+}</pre>
+                        </div>
+                        <div class="text-xs mt-3">
+                            <div class="comment">→ Error Response (500):</div>
+                            <pre class="ml-4 mt-1 text-red-400">{
+  "success": false,
+  "error": "fal.ai API error: rate limit exceeded"
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3 text-sm">Chat API (OpenAI)</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Endpoint: api/chat.js</div>
+                        <div class="prompt">POST /api/chat</div>
+                        <div class="text-xs mt-3">
+                            <div class="comment">→ Request Body:</div>
+                            <pre class="ml-4 mt-1">{
+  "bookId": "uuid-1",
+  "message": "עזור לי לכתוב תיאור של דמות ראשית",
+  "context": {
+    "bookTitle": "הספר הראשון שלי",
+    "currentChapter": "פרק ראשון",
+    "genre": "רומן"
+  }
+}</pre>
+                        </div>
+                        <div class="text-xs mt-3">
+                            <div class="comment">→ Response (200 OK):</div>
+                            <pre class="success ml-4 mt-1">{
+  "success": true,
+  "message": "בהחלט! הנה כמה רעיונות לדמות ראשית...",
+  "messageId": "msg-uuid-3",
+  "timestamp": "2025-12-06T10:40:00Z"
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3 text-sm">Database API (lowdb wrapper)</h3>
+                    <div class="code-block p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-3">// js/db.js - Main database operations</div>
+                        <pre class="text-xs"><span class="comment">// Books</span>
+<span class="keyword">async function</span> <span class="string">getAllBooks</span>()
+<span class="keyword">async function</span> <span class="string">getBook</span>(id)
+<span class="keyword">async function</span> <span class="string">createBook</span>(bookData)
+<span class="keyword">async function</span> <span class="string">updateBook</span>(id, updates)
+<span class="keyword">async function</span> <span class="string">deleteBook</span>(id)
+
+<span class="comment">// Chapters</span>
+<span class="keyword">async function</span> <span class="string">getChaptersByBookId</span>(bookId)
+<span class="keyword">async function</span> <span class="string">createChapter</span>(chapterData)
+<span class="keyword">async function</span> <span class="string">updateChapter</span>(id, updates)
+<span class="keyword">async function</span> <span class="string">deleteChapter</span>(id)
+
+<span class="comment">// Pages</span>
+<span class="keyword">async function</span> <span class="string">getPagesByChapterId</span>(chapterId)
+<span class="keyword">async function</span> <span class="string">createPage</span>(pageData)
+<span class="keyword">async function</span> <span class="string">updatePage</span>(id, updates)
+<span class="keyword">async function</span> <span class="string">deletePage</span>(id)
+
+<span class="comment">// Chat Messages</span>
+<span class="keyword">async function</span> <span class="string">getChatMessagesByBookId</span>(bookId)
+<span class="keyword">async function</span> <span class="string">addChatMessage</span>(messageData)</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infrastructure -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"/>
+                    <path d="M12 5v14"/>
+                </svg>
+                <h2 class="text-2xl font-light">Infrastructure & Services</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div>
+                    <h3 class="font-medium mb-3">Required External Services</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                    <path d="M3 9h18"/>
+                                </svg>
+                                <h4 class="font-medium text-sm">fal.ai (Cover Generation)</h4>
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-1">
+                                <div><strong>Model:</strong> flux/dev or flux/schnell</div>
+                                <div><strong>Cost:</strong> ~$0.02-0.05 per image</div>
+                                <div><strong>Setup:</strong> API key from fal.ai dashboard</div>
+                                <div><strong>Rate Limits:</strong> Check tier (typically 100/min free)</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                <h4 class="font-medium text-sm">OpenAI (Chat Assistant)</h4>
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-1">
+                                <div><strong>Model:</strong> gpt-4o-mini (cost-effective)</div>
+                                <div><strong>Cost:</strong> ~$0.15/1M tokens input</div>
+                                <div><strong>Setup:</strong> API key from platform.openai.com</div>
+                                <div><strong>Context:</strong> Max 128k tokens (plenty for books)</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                </svg>
+                                <h4 class="font-medium text-sm">lowdb (Database)</h4>
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-1">
+                                <div><strong>Type:</strong> JSON file-based database</div>
+                                <div><strong>Cost:</strong> Free, local storage</div>
+                                <div><strong>Setup:</strong> npm install lowdb (ESM import)</div>
+                                <div><strong>Limits:</strong> Good for <100 books, then migrate</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                                </svg>
+                                <h4 class="font-medium text-sm">Google Fonts</h4>
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-1">
+                                <div><strong>Font:</strong> Rubik or Alef (Hebrew + Latin)</div>
+                                <div><strong>Cost:</strong> Free</div>
+                                <div><strong>Setup:</strong> CDN link in HTML head</div>
+                                <div><strong>Weights:</strong> 300, 400, 500, 600, 700</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">CDN Dependencies (No Build Process)</h3>
+                    <div class="code-block p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-3"><!-- Add to HTML head --></div>
+                        <pre class="text-xs"><span class="comment">&lt;!-- Tailwind CSS --&gt;</span>
+<span class="keyword">&lt;script</span> src=<span class="string">"https://cdn.tailwindcss.com"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Alpine.js --&gt;</span>
+<span class="keyword">&lt;script</span> defer src=<span class="string">"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Shoelace Components --&gt;</span>
+<span class="keyword">&lt;link</span> rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.x.x/dist/themes/light.css"</span> <span class="keyword">/&gt;</span>
+<span class="keyword">&lt;script</span> type=<span class="string">"module"</span> src=<span class="string">"https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.x.x/dist/shoelace-autoloader.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Lucide Icons --&gt;</span>
+<span class="keyword">&lt;script</span> src=<span class="string">"https://unpkg.com/lucide@latest"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Google Fonts (Hebrew) --&gt;</span>
+<span class="keyword">&lt;link</span> href=<span class="string">"https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"</span> rel=<span class="string">"stylesheet"</span> <span class="keyword">/&gt;</span></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">Environment Variables</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Create .env file in project root</div>
+                        <pre class="text-xs"><span class="comment"># fal.ai API Key</span>
+FAL_AI_API_KEY=<span class="string">your_fal_ai_key_here</span>
+
+<span class="comment"># OpenAI API Key</span>
+OPENAI_API_KEY=<span class="string">your_openai_key_here</span>
+
+<span class="comment"># Database path (optional, defaults to ./data/db.json)</span>
+DB_PATH=<span class="string">./data/db.json</span>
+
+<span class="comment"># Server port (for local API endpoints)</span>
+PORT=<span class="number">3000</span></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Timeline -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+                    <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+                </svg>
+                <h2 class="text-2xl font-light">Implementation Timeline</h2>
+            </div>
+
+            <div class="ml-9 space-y-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">1</div>
+                        <h3 class="font-medium">Phase 1: Foundation Setup (Day 1-2)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Project Structure</strong>
+                                    <div class="text-xs text-slate-600">Create folder structure, index.html, book.html templates</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>CDN Setup</strong>
+                                    <div class="text-xs text-slate-600">Add all CDN links (Tailwind, Alpine.js, Shoelace, Lucide, Fonts)</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Database Layer</strong>
+                                    <div class="text-xs text-slate-600">Install lowdb, create db.js wrapper, initialize db.json with schema</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>RTL Configuration</strong>
+                                    <div class="text-xs text-slate-600">Add dir="rtl" to HTML, configure Tailwind RTL utilities, test Hebrew text rendering</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">2</div>
+                        <h3 class="font-medium">Phase 2: Book List Page (Day 3-4)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Grid Layout</strong>
+                                    <div class="text-xs text-slate-600">Build responsive book grid with Tailwind (1-3 columns), add book cards</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Alpine.js Integration</strong>
+                                    <div class="text-xs text-slate-600">Create Alpine component for book list, load books from db.json</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Placeholder Covers</strong>
+                                    <div class="text-xs text-slate-600">Add default cover images for books without generated covers</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Navigation</strong>
+                                    <div class="text-xs text-slate-600">Implement click navigation to book detail page with bookId query param</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">3</div>
+                        <h3 class="font-medium">Phase 3: Book Detail Page Layout (Day 5-6)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Two-Column Layout</strong>
+                                    <div class="text-xs text-slate-600">Content area (2/3 width) + Chat sidebar (1/3 width), RTL-aware positioning</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Book Metadata Section</strong>
+                                    <div class="text-xs text-slate-600">Display title, description, genre, author at top of content area</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Content Split</strong>
+                                    <div class="text-xs text-slate-600">Left (1/3): page/chapter navigation tree, Right (2/3): page content viewer</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Load Book Data</strong>
+                                    <div class="text-xs text-slate-600">Fetch book, chapters, pages from db.json based on bookId query param</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">4</div>
+                        <h3 class="font-medium">Phase 4: Page Navigation & Content Display (Day 7-8)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Navigation Tree Component</strong>
+                                    <div class="text-xs text-slate-600">Build collapsible chapter/page tree with Shoelace tree component</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Page Viewer</strong>
+                                    <div class="text-xs text-slate-600">Display page title + content, handle text vs. image page types</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Active State</strong>
+                                    <div class="text-xs text-slate-600">Highlight active page in navigation, update on click</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Image Page Support</strong>
+                                    <div class="text-xs text-slate-600">Display image + caption for image-type pages</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">5</div>
+                        <h3 class="font-medium">Phase 5: Chat UI (Day 9-10)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Chat Layout</strong>
+                                    <div class="text-xs text-slate-600">Header with AI avatar + name, scrollable messages area, input area at bottom</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Message Bubbles</strong>
+                                    <div class="text-xs text-slate-600">User messages (right), AI messages (left), different colors, timestamps</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Input Area</strong>
+                                    <div class="text-xs text-slate-600">Textarea with Hebrew RTL support, send button, auto-resize</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Load Chat History</strong>
+                                    <div class="text-xs text-slate-600">Fetch chat messages by bookId, display in chronological order</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">6</div>
+                        <h3 class="font-medium">Phase 6: AI Integration (Day 11-13)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>OpenAI Chat API</strong>
+                                    <div class="text-xs text-slate-600">Create api/chat.js endpoint, integrate with OpenAI API (gpt-4o-mini)</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Context Management</strong>
+                                    <div class="text-xs text-slate-600">Pass book metadata, current chapter/page context to AI for relevant responses</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Message Persistence</strong>
+                                    <div class="text-xs text-slate-600">Save user + AI messages to db.json after each exchange</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Loading States</strong>
+                                    <div class="text-xs text-slate-600">Show "AI is typing..." indicator while waiting for response</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Hebrew Language Support</strong>
+                                    <div class="text-xs text-slate-600">Configure OpenAI to respond in Hebrew, handle RTL text properly</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">7</div>
+                        <h3 class="font-medium">Phase 7: Cover Generation (Day 14-15)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>fal.ai Integration</strong>
+                                    <div class="text-xs text-slate-600">Create api/cover.js endpoint, integrate Flux model for cover generation</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Prompt Builder</strong>
+                                    <div class="text-xs text-slate-600">Auto-generate prompts from book metadata (title, genre, description)</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Cover Storage</strong>
+                                    <div class="text-xs text-slate-600">Save generated covers to /public/covers/, update book.coverImage path in db.json</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>UI Trigger</strong>
+                                    <div class="text-xs text-slate-600">Add "Generate Cover" button on book page, show progress during generation</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Regeneration Support</strong>
+                                    <div class="text-xs text-slate-600">Allow users to regenerate covers if unsatisfied with results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-medium">8</div>
+                        <h3 class="font-medium">Phase 8: Polish & Testing (Day 16-17)</h3>
+                    </div>
+                    <div class="ml-11 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>RTL Testing</strong>
+                                    <div class="text-xs text-slate-600">Test all Hebrew text displays correctly, fix any LTR/RTL issues</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Mobile Responsiveness</strong>
+                                    <div class="text-xs text-slate-600">Test on mobile devices, adjust layouts for small screens</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Error Handling</strong>
+                                    <div class="text-xs text-slate-600">Add error states for API failures, database issues, network errors</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>Performance</strong>
+                                    <div class="text-xs text-slate-600">Optimize image loading, lazy load book covers, cache AI responses</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <div>
+                                    <strong>User Testing</strong>
+                                    <div class="text-xs text-slate-600">Get feedback from Hebrew-speaking users, iterate on UX</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing Strategy -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                    <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+                    <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                </svg>
+                <h2 class="text-2xl font-light">Testing Strategy</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div>
+                    <h3 class="font-medium mb-3">Manual Testing Checklist</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-medium text-sm mb-2">Book List Page</h4>
+                            <ul class="text-xs space-y-1 text-slate-600">
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Books display in grid layout</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Hebrew titles render correctly RTL</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Covers load (or show placeholder)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Click navigates to book page</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Responsive on mobile/tablet/desktop</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-medium text-sm mb-2">Book Detail Page</h4>
+                            <ul class="text-xs space-y-1 text-slate-600">
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Two-column layout correct (2/3 + 1/3)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Book metadata displays correctly</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Chapter/page navigation works</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Page content switches on click</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Image pages show image + content</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-medium text-sm mb-2">Chat Interface</h4>
+                            <ul class="text-xs space-y-1 text-slate-600">
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>AI avatar and name display</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Messages styled correctly (bubbles)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Hebrew input works in RTL</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>AI responds in Hebrew</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Chat history persists on refresh</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-medium text-sm mb-2">Cover Generation</h4>
+                            <ul class="text-xs space-y-1 text-slate-600">
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>"Generate Cover" button works</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Loading state shows during generation</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Cover updates after generation</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Regeneration works correctly</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <input type="checkbox" class="rounded">
+                                    <span>Error handling for API failures</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">RTL Hebrew Testing</h3>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm">
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>All Hebrew text aligns right (RTL)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Chat bubbles positioned correctly (user right, AI left)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Navigation sidebar on correct side (right for RTL)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Textarea cursor starts at right edge</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 text-slate-400">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Mixed Hebrew/English text renders correctly</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-3">API Testing</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Test cover generation API</div>
+                        <div class="prompt">$ curl -X POST http://localhost:3000/api/cover \</div>
+                        <div class="ml-4">-H "Content-Type: application/json" \</div>
+                        <div class="ml-4">-d '{"bookId":"test-1","prompt":"romantic novel cover"}'</div>
+
+                        <div class="comment text-xs mt-4 mb-2"># Test chat API</div>
+                        <div class="prompt">$ curl -X POST http://localhost:3000/api/chat \</div>
+                        <div class="ml-4">-H "Content-Type: application/json" \</div>
+                        <div class="ml-4">-d '{"bookId":"test-1","message":"עזור לי לכתוב"}'</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Considerations -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>
+                    <path d="M12 9v4"/>
+                    <path d="M12 17h.01"/>
+                </svg>
+                <h2 class="text-2xl font-light">Key Considerations & Risks</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">⚠️ No Build Process Limitations</h3>
+                    <p class="text-sm text-slate-600 mb-2">Since we're using pure HTML/CSS/JS with CDN dependencies, be aware:</p>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>• No TypeScript - rely on JSDoc comments for type hints</li>
+                        <li>• No module bundling - careful with script load order</li>
+                        <li>• CDN failures can break the app - consider fallback CDNs</li>
+                        <li>• Limited code splitting - may impact initial load time</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">🌍 RTL Hebrew Challenges</h3>
+                    <p class="text-sm text-slate-600 mb-2">RTL support requires constant vigilance:</p>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>• Test every new component in RTL mode</li>
+                        <li>• Some Shoelace components may not support RTL out-of-box</li>
+                        <li>• Mixed Hebrew/English content can cause alignment issues</li>
+                        <li>• Emoji and icons may need special positioning in RTL</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">💰 API Cost Management</h3>
+                    <p class="text-sm text-slate-600 mb-2">Monitor usage to avoid unexpected costs:</p>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>• fal.ai: $0.02-0.05 per cover (rate limit: ~100/min free tier)</li>
+                        <li>• OpenAI: ~$0.15/1M input tokens (gpt-4o-mini)</li>
+                        <li>• Consider caching AI responses to reduce API calls</li>
+                        <li>• Implement rate limiting on cover generation button</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">📊 lowdb Scalability</h3>
+                    <p class="text-sm text-slate-600 mb-2">JSON file-based database has limits:</p>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>• Works well for <100 books with ~20 chapters each</li>
+                        <li>• Beyond that, consider migrating to PostgreSQL or MongoDB</li>
+                        <li>• Concurrent writes can cause data loss - implement locking</li>
+                        <li>• No built-in search - will need to implement manually</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">🔐 Security Considerations</h3>
+                    <p class="text-sm text-slate-600 mb-2">API keys and data protection:</p>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>• Never expose API keys in frontend code</li>
+                        <li>• All API calls must go through backend endpoints (api/)</li>
+                        <li>• Validate and sanitize all user input (book titles, content)</li>
+                        <li>• Consider adding user authentication in future</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"/>
+                    <path d="m12 5 7 7-7 7"/>
+                </svg>
+                <h2 class="text-2xl font-light">Next Steps</h2>
+            </div>
+
+            <div class="ml-9 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Immediate Actions</h3>
+                    <ol class="text-sm text-slate-600 space-y-2 ml-4 list-decimal">
+                        <li>Review this implementation plan with stakeholders</li>
+                        <li>Obtain API keys for fal.ai and OpenAI</li>
+                        <li>Create project folder structure as outlined</li>
+                        <li>Initialize lowdb database with sample books</li>
+                        <li>Begin Phase 1: Foundation Setup</li>
+                    </ol>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Ownership & Responsibilities</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li><strong>Frontend Development:</strong> Build UI components, RTL support, Alpine.js integration</li>
+                        <li><strong>Backend Development:</strong> API endpoints for chat and cover generation</li>
+                        <li><strong>Database Design:</strong> lowdb schema design and CRUD operations</li>
+                        <li><strong>AI Integration:</strong> OpenAI chat prompts, fal.ai cover prompts</li>
+                        <li><strong>QA Testing:</strong> RTL testing, API testing, user acceptance testing</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Open Questions</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 ml-4">
+                        <li>❓ Should we support multiple languages (English, Arabic) or Hebrew-only?</li>
+                        <li>❓ Do we need user authentication or is this single-user for now?</li>
+                        <li>❓ What's the preferred AI assistant personality/tone for Hebrew users?</li>
+                        <li>❓ Should covers be editable after generation (upload custom covers)?</li>
+                        <li>❓ Do we need export functionality (PDF, ePub) in Phase 1?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200 pt-8 mt-16 text-center text-sm text-slate-500 fade-in">
+            <p>Implementation Plan v1.0</p>
+            <p class="mt-1">Generated: December 6, 2025</p>
+            <p class="mt-1">Estimated Timeline: 17 days</p>
+        </footer>
+
+    </div>
+</body>
+</html>

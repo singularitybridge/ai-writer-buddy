@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Training Academy: תכנית יישום מקיפה</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Heebo', 'Inter', sans-serif; }
+        code, pre, .mono { font-family: 'JetBrains Mono', monospace; direction: ltr; text-align: left; }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .terminal {
+            background: #0f172a;
+            color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal .prompt { color: #22d3ee; }
+        .terminal .comment { color: #475569; }
+        .terminal .success { color: #86efac; }
+
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .code-block .keyword { color: #c084fc; }
+        .code-block .string { color: #86efac; }
+        .code-block .comment { color: #64748b; }
+        .code-block .number { color: #fbbf24; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+        <!-- Header -->
+        <div class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-4">
+                <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+                <div>
+                    <h1 class="text-3xl font-light text-slate-900">AI Agent Training Academy</h1>
+                    <p class="text-slate-600 text-sm">תכנית טרנספורמציה מקיפה מסופר חכם לאקדמיה ללימוד AI Agents</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Next.js 16</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">TypeScript</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Hebrew RTL</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Gamification</span>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">סיכום מנהלים</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ml-9">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">המצב הנוכחי</h3>
+                    <p class="text-sm text-slate-600">אפליקציית כתיבת ספרים בעברית עם AI assistant, מבנה פרקים ועמודים, בסיס ידע, צ'אט</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">המצב המבוקש</h3>
+                    <p class="text-sm text-slate-600">אקדמיה ללימוד AI agents עם מערכת משימות מבוססת נקודות, מדריכים טכניים, ו-progressive learning</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">זמן יישום משוער</h3>
+                    <p class="text-sm text-slate-600">3-4 שבועות עבודה מלאה, בפיתוח מדורג של 4 שלבים עיקריים</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current State Analysis -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">ניתוח מצב קיים</h2>
+            </div>
+            <div class="ml-9 space-y-6">
+                <div>
+                    <h3 class="font-medium text-sm mb-3">מבנה אפליקציה נוכחי</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Current File Structure</div>
+                        <div class="prompt">$ tree src/app</div>
+                        <div class="text-slate-400 mt-2" style="font-size: 0.85rem;">
+                        src/app/<br>
+                        ├── page.tsx                    # דף בית - רשימת ספרים<br>
+                        ├── layout.tsx                  # Layout עם עברית RTL<br>
+                        ├── globals.css                 # Tailwind styles<br>
+                        ├── book/[id]/                  # עריכת ספר<br>
+                        │   ├── page.tsx                # תצוגת פרקים/עמודים + chat<br>
+                        │   └── knowledge/page.tsx      # בסיס ידע<br>
+                        └── api/book/[id]/route.ts      # API endpoint
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium text-sm mb-3">רכיבים קיימים לשימוש חוזר</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm font-medium">ChatAssistant Component</span>
+                            </div>
+                            <p class="text-xs text-slate-600">ניתן להשתמש כ-"AI Mentor" לתלמידים</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm font-medium">KnowledgeBase Component</span>
+                            </div>
+                            <p class="text-xs text-slate-600">יהפוך ל-"Resource Library" למדריכים</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm font-medium">Layout System</span>
+                            </div>
+                            <p class="text-xs text-slate-600">עיצוב RTL ו-Hebrew fonts מוכנים</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm font-medium">Data Layer (lowdb)</span>
+                            </div>
+                            <p class="text-xs text-slate-600">ניתן להרחיב למשימות ונקודות</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium text-sm mb-3">תלויות טכנולוגיות נוכחיות</h3>
+                    <div class="code-block p-4 rounded-lg text-sm">
+                        <div class="comment">// package.json - Current Dependencies</div>
+                        <div class="mt-2">
+                        {<br>
+                        &nbsp;&nbsp;<span class="string">"next"</span>: <span class="string">"16.0.7"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"react"</span>: <span class="string">"19.2.0"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"lowdb"</span>: <span class="string">"^7.0.1"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"lucide-react"</span>: <span class="string">"^0.556.0"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"uuid"</span>: <span class="string">"^13.0.0"</span><br>
+                        }
+                        </div>
+                        <div class="comment mt-3">// נדרש להוסיף:</div>
+                        <div class="mt-1">
+                        &nbsp;&nbsp;<span class="string">"ai"</span>: <span class="string">"^4.0.0"</span>,&nbsp;&nbsp;<span class="comment">// Vercel AI SDK</span><br>
+                        &nbsp;&nbsp;<span class="string">"openai"</span>: <span class="string">"^4.77.0"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"@fal-ai/serverless-client"</span>: <span class="string">"latest"</span>,<br>
+                        &nbsp;&nbsp;<span class="string">"react-markdown"</span>: <span class="string">"^9.0.0"</span>,&nbsp;&nbsp;<span class="comment">// For documentation</span><br>
+                        &nbsp;&nbsp;<span class="string">"react-syntax-highlighter"</span>: <span class="string">"^15.5.0"</span>&nbsp;&nbsp;<span class="comment">// Code blocks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Data Model -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">מודל נתונים חדש</h2>
+            </div>
+            <div class="ml-9 space-y-6">
+                <div>
+                    <h3 class="font-medium text-sm mb-3">TypeScript Interfaces - משימות ונקודות</h3>
+                    <div class="code-block p-4 rounded-lg text-sm">
+<pre><span class="keyword">export interface</span> Challenge {
+  <span class="comment">// מזהה ייחודי</span>
+  id: <span class="keyword">string</span>;
+
+  <span class="comment">// כותרת בעברית</span>
+  title: <span class="keyword">string</span>;
+
+  <span class="comment">// תיאור המשימה</span>
+  description: <span class="keyword">string</span>;
+
+  <span class="comment">// נקודות עבור השלמה</span>
+  points: <span class="keyword">number</span>;
+
+  <span class="comment">// רמת קושי: beginner | intermediate | advanced</span>
+  difficulty: <span class="string">'beginner'</span> | <span class="string">'intermediate'</span> | <span class="string">'advanced'</span>;
+
+  <span class="comment">// קטגוריה: crud | ai | voice | review | i18n</span>
+  category: <span class="keyword">string</span>;
+
+  <span class="comment">// תגיות טכנולוגיות</span>
+  tags: <span class="keyword">string</span>[];
+
+  <span class="comment">// הוראות יישום מפורטות</span>
+  instructions: <span class="keyword">string</span>;
+
+  <span class="comment">// קריטריוני הצלחה</span>
+  successCriteria: <span class="keyword">string</span>[];
+
+  <span class="comment">// משימות תלויות (prerequisites)</span>
+  dependencies: <span class="keyword">string</span>[];
+
+  <span class="comment">// משאבים רלוונטיים</span>
+  resources: {
+    title: <span class="keyword">string</span>;
+    url: <span class="keyword">string</span>;
+    type: <span class="string">'docs'</span> | <span class="string">'video'</span> | <span class="string">'article'</span>;
+  }[];
+
+  <span class="comment">// קוד לדוגמה (optional)</span>
+  codeExample?: <span class="keyword">string</span>;
+
+  <span class="comment">// טיפים (hints) מדורגים</span>
+  hints: {
+    level: <span class="keyword">number</span>;
+    text: <span class="keyword">string</span>;
+    pointsPenalty: <span class="keyword">number</span>;
+  }[];
+}
+
+<span class="keyword">export interface</span> UserProgress {
+  <span class="comment">// מזהה משתמש (יכול להיות local storage בינתיים)</span>
+  userId: <span class="keyword">string</span>;
+
+  <span class="comment">// סך כל הנקודות שנצברו</span>
+  totalPoints: <span class="keyword">number</span>;
+
+  <span class="comment">// משימות שהושלמו</span>
+  completedChallenges: {
+    challengeId: <span class="keyword">string</span>;
+    completedAt: <span class="keyword">string</span>;
+    pointsEarned: <span class="keyword">number</span>;
+    hintsUsed: <span class="keyword">number</span>;
+  }[];
+
+  <span class="comment">// משימות בתהליך</span>
+  inProgressChallenges: {
+    challengeId: <span class="keyword">string</span>;
+    startedAt: <span class="keyword">string</span>;
+    hintsUsed: <span class="keyword">number</span>;
+  }[];
+
+  <span class="comment">// רמה נוכחית (calculated)</span>
+  level: <span class="keyword">number</span>;
+
+  <span class="comment">// תגי הישגים</span>
+  badges: {
+    id: <span class="keyword">string</span>;
+    name: <span class="keyword">string</span>;
+    earnedAt: <span class="keyword">string</span>;
+  }[];
+}
+
+<span class="keyword">export interface</span> TechGuide {
+  <span class="comment">// מזהה ייחודי</span>
+  id: <span class="keyword">string</span>;
+
+  <span class="comment">// כותרת בעברית</span>
+  title: <span class="keyword">string</span>;
+
+  <span class="comment">// תיאור קצר</span>
+  description: <span class="keyword">string</span>;
+
+  <span class="comment">// קטגוריה: architecture | tech-stack | patterns | tools</span>
+  category: <span class="keyword">string</span>;
+
+  <span class="comment">// תוכן (Markdown format)</span>
+  content: <span class="keyword">string</span>;
+
+  <span class="comment">// סדר תצוגה</span>
+  order: <span class="keyword">number</span>;
+
+  <span class="comment">// תאריך עדכון אחרון</span>
+  updatedAt: <span class="keyword">string</span>;
+
+  <span class="comment">// קישורים קשורים</span>
+  relatedGuides: <span class="keyword">string</span>[];
+}
+
+<span class="keyword">export interface</span> AIToolSetup {
+  <span class="comment">// שם הכלי: Claude Code | OpenAI Codex | Gemini CLI</span>
+  toolName: <span class="keyword">string</span>;
+
+  <span class="comment">// שלבי התקנה</span>
+  setupSteps: {
+    order: <span class="keyword">number</span>;
+    title: <span class="keyword">string</span>;
+    instructions: <span class="keyword">string</span>;
+    codeSnippet?: <span class="keyword">string</span>;
+  }[];
+
+  <span class="comment">// תצורה מומלצת</span>
+  recommendedConfig: <span class="keyword">string</span>;
+
+  <span class="comment">// טיפים לשימוש</span>
+  usageTips: <span class="keyword">string</span>[];
+}</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-medium text-sm mb-3">מבנה Database החדש</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="comment text-xs mb-2"># Extended db.json structure</div>
+                        <div class="mt-2 text-slate-300">
+                        {<br>
+                        &nbsp;&nbsp;<span class="string">"books"</span>: [...],&nbsp;&nbsp;<span class="comment">// Existing - לצורך backward compatibility</span><br>
+                        &nbsp;&nbsp;<span class="string">"challenges"</span>: [...],&nbsp;&nbsp;<span class="comment">// NEW - משימות לימוד</span><br>
+                        &nbsp;&nbsp;<span class="string">"userProgress"</span>: [...],&nbsp;&nbsp;<span class="comment">// NEW - התקדמות</span><br>
+                        &nbsp;&nbsp;<span class="string">"techGuides"</span>: [...],&nbsp;&nbsp;<span class="comment">// NEW - מדריכים טכניים</span><br>
+                        &nbsp;&nbsp;<span class="string">"aiToolSetups"</span>: [...],&nbsp;&nbsp;<span class="comment">// NEW - הדרכות כלי AI</span><br>
+                        &nbsp;&nbsp;<span class="string">"badges"</span>: [...]&nbsp;&nbsp;<span class="comment">// NEW - תגי הישגים</span><br>
+                        }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Routes Architecture -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">ארכיטקטורת Routes חדשה</h2>
+            </div>
+            <div class="ml-9 space-y-6">
+                <div>
+                    <h3 class="font-medium text-sm mb-3">מבנה תיקיות מוצע</h3>
+                    <div class="terminal p-4 rounded-lg text-sm">
+                        <div class="prompt">$ tree src/app -L 3</div>
+                        <div class="text-slate-400 mt-2" style="font-size: 0.85rem;">
+src/app/<br>
+├── <span class="success">page.tsx</span>                          <span class="comment"># דף בית - Academy homepage</span><br>
+├── layout.tsx<br>
+├── globals.css<br>
+│<br>
+├── <span class="success">academy/</span>                          <span class="comment"># NEW - מסלול ראשי של האקדמיה</span><br>
+│   ├── page.tsx                       <span class="comment"># Dashboard - סקירת משימות ונקודות</span><br>
+│   ├── layout.tsx                     <span class="comment"># Layout עם sidebar navigation</span><br>
+│   │<br>
+│   ├── <span class="success">challenges/</span>                   <span class="comment"># רשימת משימות</span><br>
+│   │   ├── page.tsx                   <span class="comment"># גריד משימות עם סינון</span><br>
+│   │   └── [id]/page.tsx              <span class="comment"># פרטי משימה + קריטריוני הצלחה</span><br>
+│   │<br>
+│   ├── <span class="success">guides/</span>                       <span class="comment"># מדריכים טכניים</span><br>
+│   │   ├── page.tsx                   <span class="comment"># רשימת מדריכים</span><br>
+│   │   └── [slug]/page.tsx            <span class="comment"># תצוגת מדריך (Markdown)</span><br>
+│   │<br>
+│   ├── <span class="success">tools/</span>                        <span class="comment"># הדרכות כלי AI</span><br>
+│   │   ├── page.tsx                   <span class="comment"># רשימת כלים</span><br>
+│   │   ├── claude-code/page.tsx       <span class="comment"># Claude Code setup</span><br>
+│   │   ├── openai-codex/page.tsx      <span class="comment"># OpenAI Codex setup</span><br>
+│   │   └── gemini-cli/page.tsx        <span class="comment"># Gemini CLI setup</span><br>
+│   │<br>
+│   ├── <span class="success">progress/</span>                     <span class="comment"># התקדמות אישית</span><br>
+│   │   └── page.tsx                   <span class="comment"># גרפים, badges, leaderboard</span><br>
+│   │<br>
+│   └── <span class="success">resources/</span>                    <span class="comment"># ספריית משאבים</span><br>
+│       └── page.tsx                   <span class="comment"># קישורים לדוקומנטציות חיצוניות</span><br>
+│<br>
+├── <span class="comment">book/[id]/                      # EXISTING - נשאר לצורך backward compatibility</span><br>
+│   ├── page.tsx<br>
+│   └── knowledge/page.tsx<br>
+│<br>
+└── <span class="success">api/</span><br>
+    ├── book/[id]/route.ts              <span class="comment"># Existing</span><br>
+    ├── <span class="success">challenges/</span><br>
+    │   ├── route.ts                    <span class="comment"># GET all challenges</span><br>
+    │   └── [id]/route.ts               <span class="comment"># GET/PATCH single challenge</span><br>
+    ├── <span class="success">progress/</span><br>
+    │   ├── route.ts                    <span class="comment"># GET user progress</span><br>
+    │   └── complete/route.ts           <span class="comment"># POST complete challenge</span><br>
+    └── <span class="success">guides/</span><br>
+        ├── route.ts                    <span class="comment"># GET all guides</span><br>
+        └── [slug]/route.ts             <span class="comment"># GET single guide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Phases -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">שלבי יישום</h2>
+            </div>
+            <div class="ml-9 space-y-4">
+                <!-- Phase 1 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-medium">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-slate-900 mb-1">שלב 1: מבנה בסיסי ומודלי נתונים</h3>
+                            <p class="text-sm text-slate-600 mb-3">יצירת התשתית החדשה ללא שינוי הקוד הקיים</p>
+                        </div>
+                    </div>
+                    <div class="mr-11 space-y-2">
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">עדכון <code class="text-xs bg-slate-200 px-1 rounded">src/types/index.ts</code> עם Interfaces חדשות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">הרחבת <code class="text-xs bg-slate-200 px-1 rounded">src/data/db.json</code> עם נתונים חדשים</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">הוספת functions ל-<code class="text-xs bg-slate-200 px-1 rounded">src/lib/data.ts</code> עבור challenges/progress</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">התקנת dependencies חדשות: <code class="text-xs bg-slate-200 px-1 rounded">ai, openai, react-markdown</code></span>
+                        </div>
+                        <div class="p-3 bg-white rounded border border-slate-200 mt-3">
+                            <div class="text-xs text-slate-500 mb-1">זמן משוער</div>
+                            <div class="text-sm font-medium text-slate-900">2-3 ימי עבודה</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-medium">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-slate-900 mb-1">שלב 2: דף בית חדש ומסלול Academy בסיסי</h3>
+                            <p class="text-sm text-slate-600 mb-3">מיתוג מחדש + יצירת דף Dashboard ורשימת משימות</p>
+                        </div>
+                    </div>
+                    <div class="mr-11 space-y-2">
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">עדכון <code class="text-xs bg-slate-200 px-1 rounded">src/app/page.tsx</code> - החלפת "סופר חכם" ב-"אקדמיית AI Agents"</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/page.tsx</code> - Dashboard עם סטטיסטיקות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/layout.tsx</code> - Sidebar navigation</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/challenges/page.tsx</code> - גריד משימות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/challenges/[id]/page.tsx</code> - פרטי משימה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">API routes: <code class="text-xs bg-slate-200 px-1 rounded">/api/challenges</code>, <code class="text-xs bg-slate-200 px-1 rounded">/api/progress</code></span>
+                        </div>
+                        <div class="p-3 bg-white rounded border border-slate-200 mt-3">
+                            <div class="text-xs text-slate-500 mb-1">זמן משוער</div>
+                            <div class="text-sm font-medium text-slate-900">5-7 ימי עבודה</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-medium">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-slate-900 mb-1">שלב 3: מדריכים טכניים וכלי AI</h3>
+                            <p class="text-sm text-slate-600 mb-3">תיעוד מפורט וקורסי setup</p>
+                        </div>
+                    </div>
+                    <div class="mr-11 space-y-2">
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">כתיבת מדריכים בעברית: ארכיטקטורה, Tech Stack, Design Patterns</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/guides/</code> עם Markdown renderer</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/tools/</code> - Claude, OpenAI, Gemini setup</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">רכיב <code class="text-xs bg-slate-200 px-1 rounded">CodeBlock</code> עם syntax highlighting</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">API route: <code class="text-xs bg-slate-200 px-1 rounded">/api/guides</code></span>
+                        </div>
+                        <div class="p-3 bg-white rounded border border-slate-200 mt-3">
+                            <div class="text-xs text-slate-500 mb-1">זמן משוער</div>
+                            <div class="text-sm font-medium text-slate-900">4-5 ימי עבודה</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-medium">4</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-slate-900 mb-1">שלב 4: Gamification ו-AI Mentor</h3>
+                            <p class="text-sm text-slate-600 mb-3">מערכת נקודות, תגי הישגים, ו-AI assistant מותאם</p>
+                        </div>
+                    </div>
+                    <div class="mr-11 space-y-2">
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">מערכת Hints מדורגת עם קנס נקודות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">תגי הישגים (Badges): "First Steps", "CRUD Master", "AI Whisperer"</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">יצירת <code class="text-xs bg-slate-200 px-1 rounded">src/app/academy/progress/page.tsx</code> - גרפים ו-stats</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">התאמת ChatAssistant להיות "AI Coding Mentor" עם context של משימה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">אינטגרציה Vercel AI SDK עם OpenAI GPT-4.1 mini</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm text-slate-700">localStorage לשמירת התקדמות (עד שתהיה DB אמיתית)</span>
+                        </div>
+                        <div class="p-3 bg-white rounded border border-slate-200 mt-3">
+                            <div class="text-xs text-slate-500 mb-1">זמן משוער</div>
+                            <div class="text-sm font-medium text-slate-900">5-6 ימי עבודה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Examples -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">דוגמאות משימות</h2>
+            </div>
+            <div class="ml-9 space-y-4">
+                <!-- Challenge 1 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">Beginner</span>
+                                <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">CRUD</span>
+                            </div>
+                            <h3 class="font-medium text-slate-900">אפשר עריכת עמודים</h3>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-blue-500">50</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">הוסף כפתור עריכה לכל עמוד שיפתח modal עם textarea לעריכת התוכן. שמור את השינויים ב-localStorage ועדכן את התצוגה.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-medium text-slate-700">קריטריוני הצלחה:</div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">כפתור עריכה מוצג בכל עמוד</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">Modal נפתח עם textarea המכיל את התוכן הנוכחי</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">שמירה מעדכנת את התוכן בזמן אמת ללא refresh</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">השינויים נשמרים גם לאחר רענון הדף</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 rounded text-xs font-medium">Intermediate</span>
+                                <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">AI</span>
+                            </div>
+                            <h3 class="font-medium text-slate-900">AI Agent מעדכן סיפור</h3>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-purple-500">150</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">צור AI agent שמקבל הוראה מהמשתמש (למשל "הוסף סצנת קרב בפרק 2"), מוצא את העמוד הרלוונטי, ומעדכן את התוכן.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-medium text-slate-700">קריטריוני הצלחה:</div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">Agent מזהה נכון באיזה פרק/עמוד לעבוד</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">תוכן חדש משולב בהרמוניה עם התוכן הקיים</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">שומר עקביות עם סגנון הכתיבה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">משתמש ב-Vercel AI SDK + OpenAI Agent API</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-2 bg-blue-50 rounded border border-blue-200">
+                        <div class="text-xs font-medium text-blue-700 mb-1">💡 Hint 1 (עלות: 10 נקודות)</div>
+                        <div class="text-xs text-blue-600">השתמש ב-function calling כדי לאפשר ל-agent לקרוא ולעדכן עמודים</div>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 rounded text-xs font-medium">Intermediate</span>
+                                <span class="px-2 py-0.5 bg-pink-100 text-pink-700 rounded text-xs font-medium">Voice</span>
+                            </div>
+                            <h3 class="font-medium text-slate-900">הקראת טקסט עם 11Labs</h3>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-pink-500">150</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">הוסף כפתור "הקרא" לכל עמוד שמשתמש ב-ElevenLabs API כדי להקריא את התוכן בקול AI נעים.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-medium text-slate-700">קריטריוני הצלחה:</div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">אינטגרציה עם ElevenLabs API</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">כפתור הקרא/עצור עם אנימציה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">הקול נשמע ברור ובעברית תקנית</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <svg class="w-3 h-3 text-slate-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs text-slate-600">טיפול נכון בשגיאות API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Documentation -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">Tech Stack לתיעוד</h2>
+            </div>
+            <div class="ml-9 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Vercel AI SDK</h3>
+                    <p class="text-xs text-slate-600 mb-3">ממשק אחיד לעבודה עם LLMs שונים, תמיכה בstreaming ו-function calling</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Installation</span><br>
+                        <span class="prompt">$</span> npm install ai
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">OpenAI GPT-4.1 mini</h3>
+                    <p class="text-xs text-slate-600 mb-3">מודל מהיר וזול למשימות בסיסיות, מתאים לסטודנטים</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Model ID</span><br>
+                        <span class="string">"gpt-4.1-mini"</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">OpenAI Agent API</h3>
+                    <p class="text-xs text-slate-600 mb-3">לmulti-step reasoning ופעולות מורכבות עם function calling</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Advanced tasks</span><br>
+                        Agent API with tools
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">ElevenLabs</h3>
+                    <p class="text-xs text-slate-600 mb-3">Text-to-Speech באיכות גבוהה עם קולות בעברית</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Voice generation</span><br>
+                        Hebrew TTS voices
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">fal.ai</h3>
+                    <p class="text-xs text-slate-600 mb-3">יצירת תמונות עם מודלים מתקדמים, תמיכה ביחסי גובה שונים</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Models</span><br>
+                        FLUX, Stable Diffusion
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Next.js 16</h3>
+                    <p class="text-xs text-slate-600 mb-3">React framework עם App Router, Server Components, ו-API routes</p>
+                    <div class="terminal p-2 rounded text-xs">
+                        <span class="comment"># Latest version</span><br>
+                        App Router pattern
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Specifications -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">API Endpoints חדשים</h2>
+            </div>
+            <div class="ml-9 space-y-4">
+                <div class="terminal p-4 rounded-lg text-sm">
+                    <div class="comment"># GET /api/challenges - קבלת כל המשימות</div>
+                    <div class="mt-2">
+                    <span class="keyword">Query Parameters:</span><br>
+                    &nbsp;&nbsp;difficulty?: <span class="string">'beginner'</span> | <span class="string">'intermediate'</span> | <span class="string">'advanced'</span><br>
+                    &nbsp;&nbsp;category?: <span class="string">string</span><br>
+                    &nbsp;&nbsp;completed?: <span class="string">boolean</span><br>
+                    <br>
+                    <span class="keyword">Response:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;challenges: Challenge[]<br>
+                    &nbsp;&nbsp;}
+                    </div>
+                </div>
+
+                <div class="terminal p-4 rounded-lg text-sm">
+                    <div class="comment"># GET /api/challenges/[id] - קבלת משימה ספציפית</div>
+                    <div class="mt-2">
+                    <span class="keyword">Response:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;challenge: Challenge,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;userProgress?: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;started: <span class="string">boolean</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hintsUsed: <span class="number">number</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;completed: <span class="string">boolean</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;}
+                    </div>
+                </div>
+
+                <div class="terminal p-4 rounded-lg text-sm">
+                    <div class="comment"># POST /api/progress/complete - סימון משימה כהושלמה</div>
+                    <div class="mt-2">
+                    <span class="keyword">Body:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;challengeId: <span class="string">string</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;hintsUsed: <span class="number">number</span><br>
+                    &nbsp;&nbsp;}<br>
+                    <br>
+                    <span class="keyword">Response:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;pointsEarned: <span class="number">number</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;totalPoints: <span class="number">number</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;newBadges?: Badge[]<br>
+                    &nbsp;&nbsp;}
+                    </div>
+                </div>
+
+                <div class="terminal p-4 rounded-lg text-sm">
+                    <div class="comment"># GET /api/guides - קבלת כל המדריכים</div>
+                    <div class="mt-2">
+                    <span class="keyword">Query Parameters:</span><br>
+                    &nbsp;&nbsp;category?: <span class="string">string</span><br>
+                    <br>
+                    <span class="keyword">Response:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;guides: TechGuide[]<br>
+                    &nbsp;&nbsp;}
+                    </div>
+                </div>
+
+                <div class="terminal p-4 rounded-lg text-sm">
+                    <div class="comment"># GET /api/guides/[slug] - קבלת מדריך ספציפי</div>
+                    <div class="mt-2">
+                    <span class="keyword">Response:</span><br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;guide: TechGuide,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;relatedGuides: TechGuide[]<br>
+                    &nbsp;&nbsp;}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing Strategy -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">אסטרטגיית בדיקות</h2>
+            </div>
+            <div class="ml-9 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-3">בדיקות ידניות</h3>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>ניווט בין עמודי האקדמיה ללא שגיאות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>השלמת משימה מקצה לקצה וקבלת נקודות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>בדיקת Hints עם קנס נקודות</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>וידוא שמירה ב-localStorage</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>בדיקת תצוגה ב-mobile/desktop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-3">בדיקות אינטגרציה עם AI</h3>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-purple-500">▸</span>
+                            <span>AI Mentor מגיב בהקשר המשימה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-purple-500">▸</span>
+                            <span>OpenAI Agent API מזהה נכון איזה עמוד לערוך</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-purple-500">▸</span>
+                            <span>ElevenLabs מקריא טקסט בעברית ברורה</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-purple-500">▸</span>
+                            <span>fal.ai יוצר תמונות בהתאם לפרומפט</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-3">בדיקות UX</h3>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500">▸</span>
+                            <span>תגובה ויזואלית לפעולות (loading states, success messages)</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500">▸</span>
+                            <span>הנחיות ברורות לתלמידים בכל שלב</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500">▸</span>
+                            <span>מערכת Hints עוזרת אבל לא חושפת את הפתרון</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-green-500">▸</span>
+                            <span>התקדמות נראית ומניעה (gamification)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketing Strategy -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">אסטרטגיה עסקית ושיווקית</h2>
+            </div>
+            <div class="ml-9 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">GitHub Package - Self-Contained</h3>
+                    <p class="text-sm text-slate-600">פרויקט ניתן לשכפול מ-GitHub עם הוראות התקנה פשוטות, מאפשר לכל אחד להריץ מקומית ולהתחיל ללמוד</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">Progressive Learning</h3>
+                    <p class="text-sm text-slate-600">מערכת נקודות מעודדת התקדמות מדורגת, תלמידים רואים שיפור ברור ביכולותיהם</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">הכוונה לאקדמיה</h3>
+                    <p class="text-sm text-slate-600 mb-3">כל משימה מקדמת את רעיון האקדמיה - ללמד AI coding, vibe coding, ו-MCP</p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="text-center p-2 bg-white rounded border border-slate-200">
+                            <div class="text-xs text-slate-500">Beginner</div>
+                            <div class="text-lg font-medium text-slate-900">250</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                        <div class="text-center p-2 bg-white rounded border border-slate-200">
+                            <div class="text-xs text-slate-500">Intermediate</div>
+                            <div class="text-lg font-medium text-slate-900">700</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                        <div class="text-center p-2 bg-white rounded border border-slate-200">
+                            <div class="text-xs text-slate-500">Advanced</div>
+                            <div class="text-lg font-medium text-slate-900">1250</div>
+                            <div class="text-xs text-slate-500">נקודות</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-sm mb-2">תכנים שיווקיים מוצעים</h3>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>"למד לקודד עם AI - חוויית למידה אינטראקטיבית בעברית"</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>"מ-Zero ל-Hero ב-AI Agents - מסלול לימוד מובנה עם משימות מעשיות"</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>"למד Vibe Coding - תכנות עם AI בצורה חכמה ויעילה"</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-blue-500">▸</span>
+                            <span>"מערכת נקודות והישגים - עקוב אחר ההתקדמות שלך"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="mb-16 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+                <h2 class="text-2xl font-light text-slate-900">צעדים הבאים מיידיים</h2>
+            </div>
+            <div class="ml-9 space-y-3">
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs font-medium">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-blue-900 text-sm mb-1">אישור וולידציה</h3>
+                            <p class="text-sm text-blue-700">סקור תכנית זו ואשר את הגישה, הציין שינויים או התאמות נדרשות</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs font-medium">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-purple-900 text-sm mb-1">יצירת Git Branch</h3>
+                            <p class="text-sm text-purple-700 mb-2">צור branch חדש למהלך הטרנספורמציה</p>
+                            <div class="terminal p-2 rounded text-xs">
+                                <span class="prompt">$</span> git checkout -b feature/academy-transformation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs font-medium">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-green-900 text-sm mb-1">התחל שלב 1</h3>
+                            <p class="text-sm text-green-700">עדכן Types, הרחב Database, הוסף dependencies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-xs font-medium">4</span>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-orange-900 text-sm mb-1">בדיקות רציפות</h3>
+                            <p class="text-sm text-orange-700">לאחר כל שלב, וודא שהקוד הקיים ממשיך לעבוד (backward compatibility)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200 pt-8 mt-16">
+            <div class="flex items-center justify-between text-sm text-slate-500">
+                <div>
+                    <p class="font-medium mb-1">AI Agent Training Academy - תכנית יישום</p>
+                    <p>נוצר עם Claude Code</p>
+                </div>
+                <div class="text-left">
+                    <p class="font-medium mb-1">גרסה 1.0</p>
+                    <p>6 בדצמבר 2025</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
