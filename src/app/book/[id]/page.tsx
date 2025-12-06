@@ -20,7 +20,9 @@ import {
   User,
   Database,
   Volume2,
-  Loader2
+  Loader2,
+  GraduationCap,
+  Github
 } from 'lucide-react';
 import ChatAssistant from '@/components/ChatAssistant';
 import { Book, Chapter, Page, ChatMessage, KnowledgeItem, Character } from '@/types';
@@ -157,6 +159,22 @@ export default function BookPage({ params }: Props) {
                 <Database className="w-4 h-4" />
                 <span className="text-sm font-medium">{t('book.knowledgeBase')}</span>
               </Link>
+              <Link
+                href="/academy"
+                className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
+              >
+                <GraduationCap className="w-4 h-4" />
+                <span className="text-sm font-medium">{t('nav.academy')}</span>
+              </Link>
+              <a
+                href="https://github.com/singularitybridge/ai-writer-buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
+              >
+                <Github className="w-4 h-4" />
+                <span className="text-sm font-medium">GitHub</span>
+              </a>
               <button className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
                 <Settings className="w-5 h-5" />
               </button>

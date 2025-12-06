@@ -8,7 +8,8 @@ import {
   BookOpen,
   Plus,
   Bot,
-  GraduationCap
+  GraduationCap,
+  Github
 } from 'lucide-react';
 
 export default async function HomePage() {
@@ -40,6 +41,15 @@ export default async function HomePage() {
                 <GraduationCap className="w-4 h-4" />
                 <span>{t('nav.academy')}</span>
               </Link>
+              <a
+                href="https://github.com/singularitybridge/ai-writer-buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-600 hover:text-slate-900 px-3 py-2 text-sm font-medium"
+              >
+                <Github className="w-4 h-4" />
+                <span>GitHub</span>
+              </a>
             </div>
           </div>
         </div>

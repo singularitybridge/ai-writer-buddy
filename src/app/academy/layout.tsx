@@ -15,7 +15,8 @@ import {
   ChevronRight,
   ChevronLeft,
   Star,
-  Pen
+  Pen,
+  Github
 } from 'lucide-react';
 
 export default function AcademyLayout({
@@ -68,6 +69,15 @@ export default function AcademyLayout({
                 <Pen className="w-4 h-4" />
                 <span>{t('nav.openApp')}</span>
               </Link>
+              <a
+                href="https://github.com/singularitybridge/ai-writer-buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm"
+              >
+                <Github className="w-4 h-4" />
+                <span>GitHub</span>
+              </a>
               <div className="h-6 w-px bg-slate-200" />
               <div className="flex items-center gap-2 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-lg text-sm">
                 <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
